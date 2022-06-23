@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Grant Richmond
+	email = mail@grant.codes
+[core]
+	fileMode = false
+[color]
+	ui = auto

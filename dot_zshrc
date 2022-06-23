@@ -1,0 +1,30 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Plugins
+plugins=(
+  git
+  common-aliases
+  extract
+  git-flow-avh
+  npm
+  nvm
+  zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+
+# Set editor
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
+
+# Aliases
+
+eval "$(starship init zsh)"	

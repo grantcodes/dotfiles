@@ -26,7 +26,7 @@ if ! [ -x "$(command -v npm)" ]; then
   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
   sudo apt install -y nodejs
 fi
-npm install -g npm-check-updates @bitwarden/cli vercel
+npm install -g npm-check-updates @bitwarden/cli vercel @githubnext/github-copilot-cli
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
 # Install Starship prompt

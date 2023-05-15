@@ -16,7 +16,7 @@ fi
 
 # Aliases
 
-alias docker-compse="docker compose --compatibility $@"
+alias docker-compose="docker compose --compatibility $@"
 
 # Custom git helpers for Kinsta dev work
 kgf() {

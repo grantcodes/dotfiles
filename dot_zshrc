@@ -15,6 +15,9 @@ else
 fi
 
 # Aliases
+
+alias docker-compse="docker compose --compatibility $@"
+
 # Custom git helpers for Kinsta dev work
 kgf() {
   echo "Creating feature: $1"

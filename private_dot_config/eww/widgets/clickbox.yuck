@@ -1,0 +1,17 @@
+(defwidget clickbox [var varname ?class ?duration ?transition ?tooltip]
+    (box :class "${class} clickbox" :orientation "h" :space-evenly false :tooltip "${tooltip}"
+        (button :onclick "eww update ${varname}=${ var ? false : true }"
+            (children :nth 0)
+        )
+        (revealer :reveal var
+            :transition {transition ?: "slideleft"}
+            :duration {duration ?: "500ms"}
+                (box
+                    :class "${class}"
+                    :space-evenly false
+                    :spacing 10
+                    (children :nth 1)
+                )
+        )
+    )
+)

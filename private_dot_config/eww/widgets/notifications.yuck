@@ -1,0 +1,5 @@
+(defwidget notifications []
+    (box :class "notifications-container" :space-evenly "false" :spacing 4 :tooltip "notifications: TODO%"
+        (label :text "notifications")
+    )
+)

@@ -1,0 +1,18 @@
+configuration {
+  font: "CaskaydiaCove Nerd Font 12";
+  modi: "combi";
+  show-icons: true;
+  terminal: "kitty";
+  combi-modi: "window,drun,run,ssh,emoji:rofimoji,filebrowser,calc";
+  display-window: "Windows";
+  display-windowcd: "Windows";
+  display-run: "Commands";
+  display-ssh: "SSH";
+  display-drun: "Applications";
+  display-combi: "All";
+  display-keys: "Keys";
+}
+
+
+@theme "theme.rasi"
+@import "~/.cache/wal/colors-rofi-dark"

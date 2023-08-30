@@ -1,0 +1,5 @@
+(defwidget date []
+    (box :class "date-container" :space-evenly "false" :spacing 4 :tooltip "Date: ${date}"
+        (label :text "${date}")
+    )
+)

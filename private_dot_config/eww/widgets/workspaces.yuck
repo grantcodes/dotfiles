@@ -1,0 +1,24 @@
+(defwidget workspaces []
+    (eventbox
+        :onscroll "bash ~/.config/eww/scripts/set-active-workspace.sh {} ${current_workspace}"
+        :class "workspaces"
+        (box :orientation "h"
+            :spacing 10
+            :valign "center"
+            (label :text "${workspaces}${current_workspace}" :visible false)
+            (for ws in workspaces
+                ; (button :class "${ws.class} workspaces__button"
+                ;     :onclick {ws.onclick} {ws.icon}
+                ; )
+                (eventbox
+                    :visible "${ws.windows > 0}"
+                    :onclick "hyprctl dispatch workspace ${ws.id}"
+                    (box
+                        :class "workspaces__box ${ws.id == current_workspace ? "is-current" : ""}"
+                        (label :text "${ws.id == current_workspace ? "" : ""}")
+                    )
+                )
+            )
+        )
+    )
+)

@@ -1,0 +1,27 @@
+; (deflisten music
+;     :initial ""
+;     :onchange "eww update revealSpotify=true && sleep 5 && eww update revealSpotify=false"
+;     "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true"
+; )
+  
+; (deflisten musicStatus "playerctl --follow status || true")
+
+; (deflisten workspace "workspaces 0")
+
+; (deflisten notifications
+;     :initial ""
+;     :onchange "eww update revealNotify=true && sleep 5 && eww update revealNotify=false"
+;     "notification-listener"
+; )
+
+; (deflisten battery :initial "?"
+;   `tail -F /sys/class/power_supply/BAT0/capacity`)
+
+; (deflisten workspaces_main :initial '[{"class":"workspace-visible","onclick":"swaymsg \"workspace number 1\"","icon":""},{"class":"workspace-inactive","onclick":"swaymsg \"workspace number 2\"","icon":""},{"class":"workspace-inactive","onclick":"swaymsg \"workspace number 3\"","icon":""},{"class":"workspace-inactive","onclick":"swaymsg \"workspace number 4\"","icon":""}]'
+  ; "scripts/sway-workspaces 1-4")
+; (deflisten workspaces_side :initial '[{"class":"workspace-visible","onclick":"swaymsg \"workspace number 1\"","icon":""},{"class":"workspace-inactive","onclick":"swaymsg \"workspace number 2\"","icon":""},{"class":"workspace-inactive","onclick":"swaymsg \"workspace number 3\"","icon":""},{"class":"workspace-inactive","onclick":"swaymsg \"workspace number 4\"","icon":""}]'
+  ; "scripts/sway-workspaces 11-14")
+
+  (deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces.sh")
+  (deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace.sh")
+  (deflisten windowTitle :initial "..." "sh ~/.config/eww/scripts/get-window-title.sh") 

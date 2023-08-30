@@ -1,0 +1,14 @@
+(defvar revealNetwork false)
+
+(defwidget network[]
+    (clickbox
+        :var revealNetwork
+        :varname "revealNetwork"
+        :transition "slideleft"
+        :tooltip "Network: ${wifi}"
+        (label :class "icon" :text "${wifiIcon}" )
+        (box :space-evenly false :spacing 4
+            (label :class "wifi-text" :text "${wifi}")
+        )
+    )
+)

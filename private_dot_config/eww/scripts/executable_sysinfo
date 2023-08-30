@@ -1,0 +1,171 @@
+#!/bin/bash
+
+## Files and Data
+PREV_TOTAL=0
+PREV_IDLE=0
+
+## Get Battery Capacity
+get_bat(){
+	BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+	cat /sys/class/power_supply/${BAT}/capacity
+}
+
+## Get Battery Icons
+
+get_baticon() {
+	BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+	BATPER=`cat /sys/class/power_supply/${BAT}/capacity`
+	if [[ "$BATPER" -le "10" ]]; then
+		echo "󰁺"
+	elif [[ "$BATPER" -le "20" ]]; then
+		echo "󰁻"
+	elif [[ "$BATPER" -le "30" ]]; then
+		echo "󰁼"
+	elif [[ "$BATPER" -le "40" ]]; then
+		echo "󰁽"
+    elif [[ "$BATPER" -le "50" ]]; then
+		echo "󰁾"
+	elif [[ "$BATPER" -le "60" ]]; then
+		echo "󰁿"
+	elif [[ "$BATPER" -le "70" ]]; then
+		echo "󰂀"
+    elif [[ "$BATPER" -le "80" ]]; then
+		echo "󰂁"
+	elif [[ "$BATPER" -le "90" ]]; then
+		echo "󰂂"
+	else
+		echo "󰁹"
+	fi
+}
+
+
+## Get Brightness
+get_blight() {
+	bright=`xbacklight -get`
+	echo "$bright"
+}
+
+blight_up() {
+    xbacklight -inc 1
+}
+
+blight_down() {
+    xbacklight -dec 1
+}
+
+
+## Get Brightness Icons
+get_bliicon() {
+	bright=`xbacklight -get`
+	if [[ "$bright" -le "20" ]]; then
+		echo "󰃜"
+	elif [[ "$bright" -le "40" ]]; then
+		echo "󰃝"
+	elif [[ "$bright" -le "60" ]]; then
+		echo "󰃞"
+	elif [[ "$bright" -le "80" ]]; then
+		echo "󰃟"
+	else
+		echo "󰃠"
+	fi
+}
+
+
+## Get Volume
+get_vol() {
+    vol=`pamixer --get-volume`
+    echo "$vol"
+}
+
+vol_up() {
+    pamixer -i 1
+}
+
+vol_down() {
+    pamixer -d 1
+}
+
+## Get Volume Icons
+get_volicon() {
+	mute=`pamixer --get-mute`
+	vol=`pamixer --get-volume`
+	if [[ "$mute" == "true" ]]; then
+		echo "󰝟"
+    elif [[ "$vol" -le "1" ]]; then
+		echo "󰝟"
+	elif [[ "$vol" -le "20" ]]; then
+		echo ""
+	elif [[ "$vol" -le "40" ]]; then
+		echo "󰖀"
+	elif [[ "$vol" -le "60" ]]; then
+		echo "󰕾"
+	elif [[ "$vol" -le "80" ]]; then
+		echo "󰕾"
+	else
+		echo ""
+	fi
+}
+
+
+## Get Wifi
+get_wifi() {
+    wifi=`nmcli con show --active`
+    if [[ -z "$wifi" ]]; then
+        echo "No connection"
+    else
+        echo `nmcli -t -f name,device connection show --active | grep wlp | cut -d\: -f1`
+    fi
+}
+
+## Get Wifi Icon
+get_wifiicon() {
+    wifi=`nmcli con show --active`
+    if [[ -z "$wifi" ]]; then
+        echo "󰖪"
+    else
+        echo "󰖩"
+    fi
+}
+
+## Get Temperature
+get_temp()
+{
+	cat /sys/class/thermal/thermal_zone0/temp
+}
+
+## Get Temperature Icon
+get_tempicon()
+{
+	echo ""
+}
+
+## Execute accordingly
+if [[ "$1" == "--bat" ]]; then
+	get_bat
+elif [[ "$1" == "--baticon" ]]; then
+	get_baticon
+elif [[ "$1" == "--bli" && "$2" == "up" ]]; then
+    blight_up
+elif [[ "$1" == "--bli" && "$2" == "down" ]]; then
+    blight_down
+elif [[ "$1" == "--bli" ]]; then
+	get_blight
+elif [[ "$1" == "--bliicon" ]]; then
+	get_bliicon
+elif [[ "$1" == "--vol" && "$2" == "up" ]]; then
+    vol_up
+elif [[ "$1" == "--vol" && "$2" == "down" ]]; then
+    vol_down
+elif [[ "$1" == "--vol" ]]; then
+	get_vol
+elif [[ "$1" == "--volicon" ]]; then
+	get_volicon
+elif [[ "$1" == "--wifi" ]]; then
+	get_wifi
+elif [[ "$1" == "--wifiicon" ]]; then
+	get_wifiicon
+elif [[ "$1" == "--temp" ]]; then
+	get_temp
+elif [[ "$1" == "--tempicon" ]]; then
+	get_tempicon
+fi

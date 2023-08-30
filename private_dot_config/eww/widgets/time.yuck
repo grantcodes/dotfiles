@@ -1,0 +1,5 @@
+(defwidget time []
+    (box :class "time-container" :space-evenly "false" :spacing 4 :tooltip "Time: ${time}"
+        (label :text "${time}")
+    )
+)

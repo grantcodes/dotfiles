@@ -1,6 +1,11 @@
+@use '../../.cache/wal/colors.scss' as wal;
+
 $bg: rgba(0, 0, 0, 0.2);
+$bg: rgba(wal.$background, 0.4);
 $fg: rgba(255, 255, 255, 1);
+$fg: wal.$foreground;
 $fg--light: rgba(255, 255, 255, 0.1);
+$fg--light: rgba(wal.$foreground, 0.1);
 
 * {
   all: unset;
@@ -50,4 +55,20 @@ scale highlight {
 
 .workspaces__box {
   min-width: 16px;
+}
+
+// Actions dropdown
+
+.actions {
+  background-color: $bg;
+  color: $fg;
+  padding: 0.4em 8px;
+  font-size: 1em;
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  border-radius: 4px;
+}
+
+.actions__menu {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }

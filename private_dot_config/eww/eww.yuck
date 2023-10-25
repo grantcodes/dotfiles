@@ -10,6 +10,9 @@
 (include "./widgets/volume.yuck")
 (include "./widgets/window-title.yuck")
 (include "./widgets/workspaces.yuck")
+(include "./widgets/action-button.yuck")
+(include "./widgets/actions/menu.yuck")
+(include "./widgets/actions/power.yuck")
 
 (include "./example.yuck")
 
@@ -30,6 +33,7 @@
             (volume)
             (date)
             (time)
+            (actionbutton)
         )
     )
 )
@@ -53,4 +57,27 @@
     )
     :reserve (struts :side "top" :distance "4%")
     (bar)
+)
+
+(defwidget actions []
+    (centerbox :orientation "v"  :class "actions"
+        (box :orientation "h" :spacing 6 :space-evenly false :halign "center" 
+            ; (label :text "Menu")
+        )
+        (actionsmenu)  
+        (actionspower)
+    )
+)
+
+(defwindow actions
+    :monitor 0
+    :windowtype "dialog"
+    :stacking "overlay"
+    :geometry (geometry
+      :x 8
+      :y 8
+      :width 200
+      :anchor "top right"
+    )
+    (actions)
 )

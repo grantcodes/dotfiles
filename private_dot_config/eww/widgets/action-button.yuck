@@ -1,0 +1,5 @@
+(defwidget actionbutton []
+    (box :class "-" :space-evenly "false" :spacing 4 :tooltip "Actions" :width 20
+        (button :onclick "eww open --toggle actions" "")
+    )
+)

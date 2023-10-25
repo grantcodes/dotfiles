@@ -1,0 +1,7 @@
+(defwidget actionspower []
+    (box :orientation "h" :spacing 20 :space-evenly false :halign "center" :hexpand true
+        (button :onclick "poweroff" "⏻")
+        (button :onclick "loginctl kill-session self" "")
+        (button :onclick "reboot" "")
+    )
+)

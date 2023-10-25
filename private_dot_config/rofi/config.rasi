@@ -15,4 +15,4 @@ configuration {
 
 
 @theme "theme.rasi"
-@import "~/.cache/wal/colors-rofi-dark"
+@import "~/.cache/wal/colors-rofi"

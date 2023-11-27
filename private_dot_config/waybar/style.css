@@ -1,0 +1,243 @@
+@import url('file:///home/grantcodes/.cache/wal/colors-gtk.css');
+
+* {
+  font-family: 'CaskaydiaCove Nerd Font', FontAwesome, Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+window#waybar {
+  background-color: @background_80;
+  color: @foreground;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: @foreground;
+}
+*/
+
+window#waybar.termite {
+  background-color: transparent;
+}
+
+window#waybar.chromium {
+  background-color: transparent;
+  border: none;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px @foreground_20;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: @foreground;
+}
+
+#workspaces button:hover {
+  background: @color0;
+}
+
+#workspaces button.focused {
+  background-color: @color1;
+  box-shadow: inset 0 -3px @foreground;
+}
+
+#workspaces button.urgent {
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+  padding: 0 10px;
+  color: @foreground;
+}
+
+#window,
+#workspaces {
+  margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#clock {
+}
+
+#battery {
+}
+
+#battery.charging,
+#battery.plugged {
+}
+
+#battery.critical:not(.charging) {
+  /* color: @foreground; */
+}
+
+label:focus {
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#disk {
+}
+
+#backlight {
+}
+
+#network {
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+trough {
+  min-width: 80px;
+  min-height: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: @foreground_20;
+}
+highlight {
+  min-width: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: @color6;
+}
+
+#wireplumber {
+}
+
+#wireplumber.muted {
+}
+
+#custom-media {
+}
+
+#custom-media.custom-spotify {
+}
+
+#custom-media.custom-vlc {
+}
+
+#temperature {
+}
+
+#temperature.critical {
+}
+
+#tray {
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+#idle_inhibitor {
+}
+
+#idle_inhibitor.activated {
+}
+
+#mpd {
+}
+
+#mpd.disconnected {
+}
+
+#mpd.stopped {
+}
+
+#mpd.paused {
+}
+
+#language {
+}
+
+#scratchpad {
+}
+
+#scratchpad.empty {
+}
+
+#privacy {
+  padding: 0;
+}
+
+#privacy-item {
+  padding: 0 5px;
+  color: white;
+}
+
+#privacy-item.screenshare {
+}
+
+#privacy-item.audio-in {
+}
+
+#privacy-item.audio-out {
+}

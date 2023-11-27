@@ -29,3 +29,5 @@ wal -n -q -e -i ~/.config/background.jpg --backend colorz
 swww img ~/.config/background.jpg --transition-type outer --transition-fps 60 --transition-duration 1.0 --transition-pos 0,0 
 
 eww reload
+swaync-client -rs
+killall -SIGUSR2 waybar

@@ -13,7 +13,7 @@ configuration {
   display-keys: "Keys";
   display-filebrowser: "";
 	drun-display-format: "{name}";
-	window-format: "{w} · {c} · {t}";
+	window-format: "{c} · {t}";
 }
 
 

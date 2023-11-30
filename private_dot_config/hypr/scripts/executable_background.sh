@@ -23,7 +23,7 @@ fi
 wget $url -O ~/.config/background.jpg
 
 wal -c
-wal -n -q -e -i ~/.config/background.jpg --backend colorz 
+wal -n -q -e -i ~/.config/background.jpg 
 
 # swww img ~/.config/background.jpg --transition-type grow --transition-fps 60 --transition-duration 1.0 --transition-pos 0.810,0.972 --transition-bezier 0.65,0,0.35,1 --transition-step 255
 swww img ~/.config/background.jpg --transition-type outer --transition-fps 60 --transition-duration 1.0 --transition-pos 0,0 

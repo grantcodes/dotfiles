@@ -1,18 +1,20 @@
 configuration {
   font: "CaskaydiaCove Nerd Font 12";
-  modi: "combi";
+  modi: "combi,run,filebrowser,window";
+  combi-modi: "window,drun,run,emoji:rofimoji";
   show-icons: true;
   terminal: "kitty";
-  combi-modi: "window,drun,run,ssh,emoji:rofimoji,filebrowser,calc";
-  display-window: "Windows";
-  display-windowcd: "Windows";
-  display-run: "Commands";
+  display-window: "";
+  display-windowcd: "";
+  display-run: "";
   display-ssh: "SSH";
-  display-drun: "Applications";
-  display-combi: "All";
+  display-drun: "";
+  display-combi: "";
   display-keys: "Keys";
+  display-filebrowser: "";
+	drun-display-format: "{name}";
+	window-format: "{w} · {c} · {t}";
 }
 
 
-@theme "theme.rasi"
-@import "~/.cache/wal/colors-rofi"
+@import "./theme"

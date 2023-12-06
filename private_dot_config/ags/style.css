@@ -1,0 +1,61 @@
+@import url('file:///home/grantcodes/.cache/wal/colors-gtk.css');
+
+* {
+  font-family: 'CaskaydiaCove Nerd Font', FontAwesome, Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+}
+
+.bar {
+  background-color: @background_80;
+  color: @foreground;
+}
+
+label {
+  /* font-weight: bold; */
+}
+
+.workspaces button,
+.media {
+  background-color: transparent;
+  border-radius: 0;
+  color: @foreground;
+}
+
+.workspaces button:hover,
+.media:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.workspaces button:active,
+.media:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.workspaces button.focused {
+  border-bottom: 3px solid @color10;
+}
+
+.client-title {
+  margin-left: 1em;
+}
+
+.notification image {
+  color: yellow;
+  margin-left: 1em;
+}
+
+.battery progressbar {
+  margin: 0 6px;
+}
+
+.clock {
+  margin: 0 6px;
+  font-size: 1.1em;
+}
+
+progress,
+highlight {
+  background-color: @color10;
+  min-height: 8px;
+}

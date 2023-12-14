@@ -1,14 +1,15 @@
 // variables are defined in options.js
 // these ones are derived from those
+@use '~/.cache/wal/colors.scss';
 
-$_widget-bg: #111;
+$_widget-bg: $background;
 $bg-color: $_widget-bg;
 $widget-opacity: 1;
-$accent-gradient: #111, #222;
-$_border-color: #333;
+$accent-gradient: $color0, $color1;
+$_border-color: $background;
 $border-opacity: 1;
 $color-scheme: 'dark';
-$fg-color: #eee;
+$fg-color: $foreground;
 $border-width: 1px;
 $shadow: rgba(0, 0, 0, 0.6);
 $padding: 8px;
@@ -17,15 +18,15 @@ $popover-padding-multiplier: 1;
 $spacing: 2px;
 $wm-gaps-multiplier: 0.5;
 $transition: 300ms;
-$accent: pink;
-$accent-fg: #222;
+$accent: $color4;
+$accent-fg: $foreground;
 $drop-shadow: true;
-$red: red;
-$blue: blue;
-$green: green;
-$orange: orange;
-$magenta: magenta;
-$yellow: yellow;
+$red: $color4;
+$blue: $color4;
+$green: $color4;
+$orange: $color4;
+$magenta: $color4;
+$yellow: $color4;
 $battery-bar-width: 80px;
 $battery-bar-height: 10px;
 $applauncher-width: 400px;

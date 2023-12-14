@@ -177,9 +177,6 @@ export default {
     }),
     flat_buttons: Option(true, { scss: 'bar-flat-buttons' }),
     separators: Option(true),
-    icon: Option('distro-icon', {
-      note: '"distro-icon" or a single font',
-    }),
   },
 
   battery: {

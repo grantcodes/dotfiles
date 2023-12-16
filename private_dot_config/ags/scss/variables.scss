@@ -1,12 +1,14 @@
 // variables are defined in options.js
 // these ones are derived from those
-@use '~/.cache/wal/colors.scss';
+@import '/home/grantcodes/.cache/wal/colors.scss';
 
-$_widget-bg: $background;
+$bar_background: rgba(0, 0, 0, 0.6);
+
+$_widget-bg: $bar_background;
 $bg-color: $_widget-bg;
 $widget-opacity: 1;
-$accent-gradient: $color0, $color1;
-$_border-color: $background;
+$accent-gradient: $color4, $color3;
+$_border-color: $bar_background;
 $border-opacity: 1;
 $color-scheme: 'dark';
 $fg-color: $foreground;
@@ -37,7 +39,7 @@ $bar-flat-buttons: true;
 $notifications-width: 500px;
 $sys-info-size: 20px;
 
-$hover: transparentize($_widget-bg, ($widget-opacity * 0.9) / 100);
+$hover: transparentize($_widget-bg, 0.6);
 $widget-bg: transparentize($_widget-bg, $widget-opacity / 100);
 $active-gradient: linear-gradient($accent-gradient);
 
@@ -61,7 +63,7 @@ $popover-radius: if($radii == 0, 0, $radii + $popover-padding);
 
 $wm-gaps: floor($spacing * $wm-gaps-multiplier);
 
-$shader-fg: #fff;
+$shader-fg: $bar_background;
 
 * {
   font-size: 16px;

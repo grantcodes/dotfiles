@@ -1,8 +1,6 @@
 #! /bin/bash
 
-killall waybar
-waybar
-killall swaync-client
-swaync
+killall ags
+ags &
 
 sh ./background.sh

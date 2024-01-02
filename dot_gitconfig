@@ -7,3 +7,5 @@
 	fileMode = false
 [color]
 	ui = auto
+[push]
+	autoSetupRemote = true

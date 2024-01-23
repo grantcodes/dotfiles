@@ -13,12 +13,12 @@ import { init } from './settings/setup.js'
 import { forMonitors } from './utils.js'
 
 const windows = () => [
-  forMonitors(FloatingDock),
+  // forMonitors(FloatingDock),
   forMonitors(Notifications),
   forMonitors(OSD),
   forMonitors(ScreenCorners),
   forMonitors(TopBar),
-  Applauncher(),
+  // Applauncher(),
   Dashboard(),
   Overview(),
   PowerMenu(),

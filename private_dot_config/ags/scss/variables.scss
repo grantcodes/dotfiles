@@ -11,7 +11,7 @@ $accent-gradient: $color4, $color3;
 $_border-color: $bar_background;
 $border-opacity: 1;
 $color-scheme: 'dark';
-$fg-color: $foreground;
+$fg-color: lighten($foreground, 10%);
 $border-width: 1px;
 $shadow: rgba(0, 0, 0, 0.6);
 $padding: 8px;
@@ -66,7 +66,8 @@ $wm-gaps: floor($spacing * $wm-gaps-multiplier);
 $shader-fg: $bar_background;
 
 * {
-  font-size: 16px;
-  font-family: 'CaskaydiaCove Nerd Font', FontAwesome, monospace;
-  font-weight: normal;
+  font-size: 15px;
+  font-family: 'Rethink Sans', 'CaskaydiaCove Nerd Font', FontAwesome,
+    sans-serif;
+  font-weight: 600;
 }

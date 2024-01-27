@@ -12,7 +12,7 @@ import DateButton from './buttons/DateButton.js'
 import NotificationIndicator from './buttons/NotificationIndicator.js'
 import SysTray from './buttons/SysTray.js'
 import ColorPicker from './buttons/ColorPicker.js'
-import SystemIndicators from './buttons/SystemIndicators.js'
+import QuickSettings from './buttons/QuickSettings.js'
 import ScreenRecord from './buttons/ScreenRecord.js'
 import BatteryBar from './buttons/BatteryBar.js'
 import SubMenu from './buttons/SubMenu.js'
@@ -82,7 +82,7 @@ const End = () =>
       SeparatorDot(),
       ScreenRecord(),
       SeparatorDot(Recorder, (r) => r.recording),
-      SystemIndicators(),
+      QuickSettings(),
     ],
   })
 

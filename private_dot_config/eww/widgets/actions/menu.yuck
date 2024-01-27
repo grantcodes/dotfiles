@@ -1,7 +1,0 @@
-(defwidget actionsmenu []
-    (box :orientation "v" :class "actions__menu" :halign "start" :spacing 8 :space-evenly false
-        ; (label :text "Item 1")
-        ; (label :text "Item 2")
-        ; (label :text "Item 3")
-    )
-)

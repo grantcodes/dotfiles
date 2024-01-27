@@ -1,5 +1,0 @@
-(defwidget window-title []
-    (box :class "window-title-container" :space-evenly "false" :spacing 4
-        (label :text windowTitle)
-    )
-)

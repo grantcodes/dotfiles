@@ -1,9 +1,0 @@
-(defwidget example [?text name]
-    (box :orientation "horizontal"
-         :halign "center"
-        text
-        (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
-            "Greet"
-        )
-    )
-)

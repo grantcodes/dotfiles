@@ -1,6 +1,4 @@
-import Applauncher from './applauncher/Applauncher.js'
 import Dashboard from './dashboard/Dashboard.js'
-import FloatingDock from './dock/FloatingDock.js'
 import Notifications from './notifications/Notifications.js'
 import OSD from './osd/OSD.js'
 import Overview from './overview/Overview.js'
@@ -13,12 +11,10 @@ import { init } from './settings/setup.js'
 import { forMonitors } from './utils.js'
 
 const windows = () => [
-  // forMonitors(FloatingDock),
   forMonitors(Notifications),
   forMonitors(OSD),
   forMonitors(ScreenCorners),
   forMonitors(TopBar),
-  // Applauncher(),
   Dashboard(),
   Overview(),
   PowerMenu(),

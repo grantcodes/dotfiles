@@ -4,7 +4,7 @@ import Variable from 'resource:///com/github/Aylur/ags/variable.js'
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js'
 import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js'
 import Battery from 'resource:///com/github/Aylur/ags/service/battery.js'
-import OverviewButton from './buttons/OverviewButton.js'
+// import OverviewButton from './buttons/OverviewButton.js'
 import Workspaces from './buttons/Workspaces.js'
 import FocusedClient from './buttons/FocusedClient.js'
 import MediaIndicator from './buttons/MediaIndicator.js'
@@ -46,7 +46,7 @@ const Start = () =>
   Widget.Box({
     class_name: 'start',
     children: [
-      OverviewButton(),
+      // OverviewButton(),
       SeparatorDot(),
       Workspaces(),
       SeparatorDot(),

@@ -1,7 +1,7 @@
 import Dashboard from './dashboard/Dashboard.js'
 import Notifications from './notifications/Notifications.js'
 import OSD from './osd/OSD.js'
-import Overview from './overview/Overview.js'
+// import Overview from './overview/Overview.js'
 import PowerMenu from './powermenu/PowerMenu.js'
 import QuickSettings from './quicksettings/QuickSettings.js'
 import ScreenCorners from './screencorner/ScreenCorners.js'
@@ -16,7 +16,7 @@ const windows = () => [
   forMonitors(ScreenCorners),
   forMonitors(TopBar),
   Dashboard(),
-  Overview(),
+  // Overview(),
   PowerMenu(),
   QuickSettings(),
   Verification(),

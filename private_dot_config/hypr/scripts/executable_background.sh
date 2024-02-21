@@ -13,21 +13,14 @@ url=https://backend.grant.codes/background/4096/2156/background.jpg
 # Unsplash aerial
 # url=https://source.unsplash.com/collection/1166960/4096x2156
 
-swww query
-if [ $? -eq 1 ] ; then
-    swww init
-    sleep 0.1
-fi
+bg=~/.config/background.jpg
 
-
-wget $url -O ~/.config/background.jpg
+wget $url -O $bg
 
 wal -c
-wal -n -q -e -i ~/.config/background.jpg 
+wal -n -q -e -i $bg 
 
-# swww img ~/.config/background.jpg --transition-type grow --transition-fps 60 --transition-duration 1.0 --transition-pos 0.810,0.972 --transition-bezier 0.65,0,0.35,1 --transition-step 255
-swww img ~/.config/background.jpg --transition-type outer --transition-fps 60 --transition-duration 1.0 --transition-pos 0,0 
-
-eww reload
-swaync-client -rs
-killall -SIGUSR2 waybar
+pkill hyprpaper
+hyprpaper &>/dev/null &
+sleep 1
+hyprctl hyprpaper unload "$bg"

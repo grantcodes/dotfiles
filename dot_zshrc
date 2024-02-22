@@ -18,6 +18,12 @@ fi
 
 alias docker-compose="docker compose --compatibility $@"
 
+
+if [ "$(tty)" = "/dev/tty1" ];then
+  exec Hyprland
+fi
+
+
 # Custom git helpers for Kinsta dev work
 kgf() {
   echo "Creating feature: $1"

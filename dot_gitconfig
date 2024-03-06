@@ -3,9 +3,12 @@
 [user]
 	name = Grant Richmond
 	email = mail@grant.codes
+	signingkey = 1CEE902AF7A8408E
 [core]
 	fileMode = false
 [color]
 	ui = auto
 [push]
 	autoSetupRemote = true
+[commit]
+	gpgsign = true

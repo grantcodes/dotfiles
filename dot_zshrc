@@ -53,6 +53,13 @@ kgd() {
   git checkout -b docs/$1
 }
 
+switchyubi() {
+  # Thanks https://glenngillen.com/setting-up-multiple-yubikeys/.
+  rm -rf ~/.gnupg/private-keys-v1.d
+  gpgconf --kill gpg-agent
+  gpg --card-status
+}
+
 # Load some custom env vars
 export $(cat /etc/environment | xargs)
 export PATH=$HOME/.local/bin:$PATH

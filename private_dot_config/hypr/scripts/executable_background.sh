@@ -3,7 +3,7 @@
 # Grab wallpaper & set colors
 
 # My daily topography wallpaper
-url=https://backend.grant.codes/background/4096/2156/background.jpg
+url=https://backend.grant.codes/background/4096/2156/background.png
 # Unsplash abstract
 # url=https://source.unsplash.com/collection/1368747/4096x2156
 # Unsplash earth
@@ -13,7 +13,7 @@ url=https://backend.grant.codes/background/4096/2156/background.jpg
 # Unsplash aerial
 # url=https://source.unsplash.com/collection/1166960/4096x2156
 
-bg=~/.config/background.jpg
+bg=~/.config/background.png
 
 wget $url -O $bg
 

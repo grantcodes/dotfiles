@@ -1,0 +1,24 @@
+$color_foreground: {{colors.primary.default.hex}};
+$color_foreground_10: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.1);
+$color_foreground_20: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.2);
+$color_foreground_40: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.4);
+$color_foreground_60: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.6);
+$color_foreground_80: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.8);
+$color_background: {{colors.background.default.hex}};
+$color_background_10: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.1);
+$color_background_20: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.2);
+$color_background_40: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.4);
+$color_background_60: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.6);
+$color_background_80: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.8);
+
+$color_harmonized_red: {{harmonized_colors.red.hex}};
+$color_harmonized_green: {{harmonized_colors.green.hex}};
+$color_harmonized_yellow: {{harmonized_colors.yellow.hex}};
+$color_harmonized_orange: {{harmonized_colors.orange.hex}};
+$color_harmonized_blue: {{harmonized_colors.blue.hex}};
+$color_harmonized_magenta: {{harmonized_colors.magenta.hex}};
+$color_harmonized_cyan: {{harmonized_colors.cyan.hex}};
+
+<* for name, value in colors *>
+    $color_{{name}}: {{value.default.hex}};
+<* endfor *>

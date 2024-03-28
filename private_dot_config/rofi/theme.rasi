@@ -2,7 +2,7 @@
  * Customized rofi theme.
  **/
 
-@import "~/.cache/wal/colors-rofi"
+@import "~/.cache/matugen/colors-rofi"
 
 /*****----- Main Window -----*****/
 window {

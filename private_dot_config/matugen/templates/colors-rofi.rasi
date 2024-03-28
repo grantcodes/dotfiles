@@ -1,0 +1,36 @@
+/**
+ * Custom rofi theme colors only.
+ **/
+
+* {
+    background: {{colors.background.default.hex}}cc;
+    background-alt: {{colors.surface_container.default.hex}};
+    foreground: {{colors.on_background.default.hex}};
+    selected: {{colors.primary.default.hex}};
+    active: {{colors.secondary.default.hex}};
+    urgent: {{colors.error.default.hex}};
+
+    border-colour:               transparent;
+    handle-colour:               {{colors.primary.default.hex}};
+    background-colour:           var(background);
+    foreground-colour:           var(foreground);
+    alternate-background:        var(background);
+    normal-background:           transparent;
+    normal-foreground:           var(foreground);
+    urgent-background:           {{colors.error_container.default.hex}};
+    urgent-foreground:           {{colors.on_error_container.default.hex}};
+    active-background:           {{colors.primary_container.default.hex}};
+    active-foreground:           {{colors.on_primary_container.default.hex}};
+    selected-normal-background:  {{colors.primary.default.hex}};
+    selected-normal-foreground:  {{colors.on_primary.default.hex}};
+    selected-urgent-background:  {{colors.primary.default.hex}};
+    selected-urgent-foreground:  {{colors.on_primary.default.hex}};
+    selected-active-background:  {{colors.primary.default.hex}};
+    selected-active-foreground:  {{colors.on_primary.default.hex}};
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: var(foreground);
+    alternate-urgent-background: {{colors.primary.default.hex}};
+    alternate-urgent-foreground: {{colors.on_primary.default.hex}};
+    alternate-active-background: {{colors.primary.default.hex}}33;
+    alternate-active-foreground: {{colors.on_primary.default.hex}};
+}

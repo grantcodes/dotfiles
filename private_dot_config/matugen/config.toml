@@ -1,0 +1,36 @@
+[config]
+reload_apps = true
+
+[config.reload_apps_list]
+kitty = true
+gtk_theme = true
+
+[config.colors_to_harmonize]
+red = "#f07178"
+orange = "#ff8f40"
+yellow = "#e6b450"
+green = "#aad94c"
+blue = "#73b8ff"
+cyan = "#39bae6"
+magenta = "#d2a6ff"
+
+[templates.scss]
+input_path = '~/.config/matugen/templates/colors-scss.scss'
+output_path = '~/.cache/matugen/colors-scss.scss'
+
+[templates.gtk]
+input_path = '~/.config/matugen/templates/colors-gtk.css'
+output_path = '~/.cache/matugen/colors-gtk.css'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/colors-hyprland.conf'
+output_path = '~/.cache/matugen/colors-hyprland.conf'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/colors-rofi.rasi'
+output_path = '~/.cache/matugen/colors-rofi.rasi'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/colors-kitty.conf'
+output_path = '~/.cache/matugen/colors-kitty.conf'
+

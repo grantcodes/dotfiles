@@ -17,8 +17,9 @@ bg=~/.config/background.png
 
 wget $url -O $bg
 
-wal -c
-wal -n -q -e -i $bg 
+# wal -c
+# wal -n -q -e -i $bg 
+matugen image $bg -m "dark"
 
 pkill hyprpaper
 hyprpaper &>/dev/null &

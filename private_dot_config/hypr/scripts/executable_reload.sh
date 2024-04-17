@@ -3,4 +3,4 @@
 killall ags
 ags &
 
-sh ./background.sh
+# sh ./background.sh

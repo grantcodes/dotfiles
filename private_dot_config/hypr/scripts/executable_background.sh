@@ -25,3 +25,6 @@ pkill hyprpaper
 hyprpaper &>/dev/null &
 sleep 1
 hyprctl hyprpaper unload "$bg"
+
+killall ags
+ags &

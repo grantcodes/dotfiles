@@ -4,8 +4,8 @@ WORKDIR="$HOME/.config/ags"
 
 function _ags() {
   pkill ags
-#   ags --inspector &
-  ags &
+  ags --inspector &
+  # ags &
 }
 
 _ags

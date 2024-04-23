@@ -77,3 +77,9 @@ monitor=desc:{{ $homePrimaryDesc }}, {{ $homePrimaryWidth }}x{{ $homePrimaryHeig
 
 # Home secondary monitor
 monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}, transform, 3
+
+# Bind first 2 workspaces to monitors, the rest are left figure themselves out
+workspace = 1, monitor:desc:{{ $homePrimaryDesc }}, default:true
+workspace = 2, monitor:desc:{{ $homePrimaryDesc }}
+workspace = 1, monitor:desc:{{ $officeDesc }}, default:true
+workspace = 2, monitor:desc:{{ $officeDesc }}

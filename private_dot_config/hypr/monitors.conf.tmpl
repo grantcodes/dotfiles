@@ -1,0 +1,80 @@
+# See https://wiki.hyprland.org/Configuring/Monitors/
+
+# Home secondary monitor - is about 1.13x bigger than the gaming one. So calculations are as follows:
+# scale = gaming monitor scale / 1.13
+# offset left = 3840 / gaming monitor scale
+# offset top = 0 - (2160 / gaming monitor scale) / 2
+
+# Default to a 0 size laptop
+{{- $laptopDesc := ""}}
+{{- $laptopWidth := 0 }}
+{{- $laptopHeight := 0 }}
+{{- $laptopScale := 1 }}
+{{- $laptopHz := 60 }}
+
+# Home primary gaming monitor
+{{- $homePrimaryDesc := "Samsung Electric Company Odyssey G70B H1AK500000" }}
+{{- $homePrimaryWidth := 3840 }}
+{{- $homePrimaryHeight := 2160 }}
+{{- $homePrimaryScale := 1.333333 }}
+{{- $homePrimaryHz := 144 }}
+{{- $homePrimaryOffsetTop := 0 }}
+{{- $homePrimaryOffsetLeft := 0 }}
+
+# Home secondary monitor (1.13x larger than the primary)
+{{- $homeSecondaryDesc := "LG Electronics LG HDR 4K 0x0002DE0C" }}
+{{- $homeSecondaryWidth := 2160 }}
+{{- $homeSecondaryHeight := 3840 }}
+{{- $homeSecondaryHz := 60 }}
+# $homeSecondaryScale := $homePrimaryScale | div 1.13
+{{- $homeSecondaryScale := 1.18 }}
+{{- $homeSecondaryOffsetTop := -1060 }}
+# $homeSecondaryOffsetLeft := $homePrimaryOffsetLeft | add ($homePrimaryWidth | div $homePrimaryScale)
+{{- $homeSecondaryOffsetLeft := 2880 }}
+
+# Office monitor
+{{- $officeDesc := "Samsung Electric Company U32J59x HTPK602414" }}
+{{- $officeWidth := 3840 }}
+{{- $officeHeight := 2160 }}
+{{- $officeScale := 1.333333 }}
+{{- $officeHz := 60 }}
+{{- $officeOffsetTop := 0 }}
+{{- $officeOffsetLeft := 0 }}
+
+# $officeOffsetLeft = $laptopWidth | div $laptopScale
+# $homePrimaryOffsetLeft = $laptopWidth | div $laptopScale
+{{- if eq .chezmoi.hostname "work" }}
+    # Work laptop
+    {{- $laptopDesc = "AU Optronics 0xD291" }}
+    {{- $laptopWidth = 1920 }}
+    {{- $laptopHeight = 1200 }}
+    {{- $laptopScale = 1.25 }}
+    {{- $homePrimaryHz = 30 }}
+    {{- $officeOffsetLeft = 1536 }}
+    {{- $homePrimaryOffsetLeft = 1536 }}
+    {{- $homeSecondaryOffsetLeft = 4416 }}
+{{- else if eq .chezmoi.hostname "framework" }}
+    # Framework laptop
+    {{- $laptopDesc = "BOE 0x0BCA" }}
+    {{- $laptopWidth = 2256 }}
+    {{- $laptopHeight = 1504 }}
+    {{- $laptopScale = 1.333333 }}
+    {{- $homePrimaryHz = 60 }}
+    {{- $officeOffsetLeft = 1692 }}
+    {{- $homePrimaryOffsetLeft = 1692 }}
+    {{- $homeSecondaryOffsetLeft = 4572 }}
+{{- end }}
+
+{{- if $laptopDesc }}
+# Laptop
+monitor=desc:{{ $laptopDesc }}, {{ $laptopWidth }}x{{ $laptopHeight }}@{{ $laptopHz}}, 0x0, {{ $laptopScale }}
+{{- end }}
+
+# Office display
+monitor=desc:{{ $officeDesc }}, {{ $officeWidth }}x{{ $officeHeight }}@{{ $officeHz}}, {{ $officeOffsetLeft }}x{{ $officeOffsetTop }}, {{ $officeScale }}
+
+# Main home gaming monitor
+monitor=desc:{{ $homePrimaryDesc }}, {{ $homePrimaryWidth }}x{{ $homePrimaryHeight }}@{{ $homePrimaryHz }}, {{ $homePrimaryOffsetLeft }}x{{ $homePrimaryOffsetTop }}, {{ $homePrimaryScale }}
+
+# Home secondary monitor
+monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}, transform, 3

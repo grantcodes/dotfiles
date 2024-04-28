@@ -3,7 +3,7 @@ reload_apps = true
 
 [config.reload_apps_list]
 kitty = true
-gtk_theme = true
+gtk_theme = true 
 
 [config.colors_to_harmonize]
 red = "#f07178"
@@ -13,6 +13,7 @@ green = "#aad94c"
 blue = "#73b8ff"
 cyan = "#39bae6"
 magenta = "#d2a6ff"
+pink = "#f26d78"
 
 [templates.scss]
 input_path = '~/.config/matugen/templates/colors-scss.scss'
@@ -37,7 +38,3 @@ output_path = '~/.cache/matugen/colors-kitty.conf'
 [templates.vivaldi]
 input_path = '~/.config/matugen/templates/colors-vivaldi.css'
 output_path = '~/.cache/matugen/vivaldi/colors-vivaldi.css'
-
-[templates.colloid]
-input_path = '~/.config/matugen/templates/_colors-colloid.scss'
-output_path = '~/.cache/matugen/_colors-colloid.scss'

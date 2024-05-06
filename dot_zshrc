@@ -81,6 +81,7 @@ zstyle ':omz:plugins:nvm' autoload yes
 antigen bundle ssh-agent
 antigen bundle rust
 antigen bundle zoxide
+antigen bundle starship
 
 # Other bundles.
 antigen bundle zsh-users/zsh-autosuggestions
@@ -91,9 +92,6 @@ antigen apply
 
 # Add GitHub Copilot CLI
 eval "$(github-copilot-cli alias -- "$0")"
-
-# Load Starship shell prompt
-eval "$(starship init zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

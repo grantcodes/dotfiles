@@ -18,8 +18,8 @@ bg=~/.config/background.png
 wget $url -O $bg
 
 # Gradience for GTK theming
-gradience-cli monet -p $bg --theme dark -n grantcodes
-gradience-cli apply -n grantcodes --gtk both
+# gradience-cli monet -p $bg --theme dark -n grantcodes
+# gradience-cli apply -n grantcodes --gtk both
 # Matugen theming for various applications
 matugen image $bg -m "dark"
 

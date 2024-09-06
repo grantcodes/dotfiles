@@ -80,6 +80,7 @@ antigen bundle nvm
 zstyle ':omz:plugins:nvm' autoload yes
 antigen bundle ssh-agent
 antigen bundle rust
+antigen bundle zoxide
 
 # Other bundles.
 antigen bundle zsh-users/zsh-autosuggestions

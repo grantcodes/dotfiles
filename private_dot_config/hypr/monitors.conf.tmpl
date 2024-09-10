@@ -66,14 +66,14 @@
 
 {{- if $laptopDesc }}
 # Laptop
-monitor=desc:{{ $laptopDesc }}, {{ $laptopWidth }}x{{ $laptopHeight }}@{{ $laptopHz}}, 0x0, {{ $laptopScale }}
+monitor=desc:{{ $laptopDesc }}, preferred, 0x0, {{ $laptopScale }}
 {{- end }}
 
 # Office display
-monitor=desc:{{ $officeDesc }}, {{ $officeWidth }}x{{ $officeHeight }}@{{ $officeHz}}, {{ $officeOffsetLeft }}x{{ $officeOffsetTop }}, {{ $officeScale }}
+monitor=desc:{{ $officeDesc }}, preferred, {{ $officeOffsetLeft }}x{{ $officeOffsetTop }}, {{ $officeScale }}
 
 # Main home gaming monitor
-monitor=desc:{{ $homePrimaryDesc }}, {{ $homePrimaryWidth }}x{{ $homePrimaryHeight }}@{{ $homePrimaryHz }}, {{ $homePrimaryOffsetLeft }}x{{ $homePrimaryOffsetTop }}, {{ $homePrimaryScale }}
+monitor=desc:{{ $homePrimaryDesc }}, preferred, {{ $homePrimaryOffsetLeft }}x{{ $homePrimaryOffsetTop }}, {{ $homePrimaryScale }}
 
 # Home secondary monitor
 monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}, transform, 3

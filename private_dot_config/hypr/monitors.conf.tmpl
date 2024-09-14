@@ -64,6 +64,10 @@
     {{- $homeSecondaryOffsetLeft = 4572 }}
 {{- end }}
 
+# Fallback monitor to workaround hyprlock issues.
+# See https://github.com/hyprwm/hyprlock/issues/434    
+monitor=FALLBACK,1920x1080@60,auto,1
+
 {{- if $laptopDesc }}
 # Laptop
 monitor=desc:{{ $laptopDesc }}, preferred, 0x0, {{ $laptopScale }}

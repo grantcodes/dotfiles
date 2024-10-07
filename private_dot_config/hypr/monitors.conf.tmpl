@@ -64,10 +64,6 @@
     {{- $homeSecondaryOffsetLeft = 4572 }}
 {{- end }}
 
-# Fallback monitor to workaround hyprlock issues.
-# See https://github.com/hyprwm/hyprlock/issues/434    
-monitor=FALLBACK,1920x1080@60,auto,1
-
 {{- if $laptopDesc }}
 # Laptop
 monitor=desc:{{ $laptopDesc }}, preferred, 0x0, {{ $laptopScale }}
@@ -81,6 +77,10 @@ monitor=desc:{{ $homePrimaryDesc }}, preferred, {{ $homePrimaryOffsetLeft }}x{{ 
 
 # Home secondary monitor
 monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}, transform, 3
+
+# Fallback monitor to workaround hyprlock issues.
+# See https://github.com/hyprwm/hyprlock/issues/434
+monitor=FALLBACK,1920x1080@60,auto,1
 
 # Bind first 2 workspaces to monitors, the rest are left figure themselves out
 workspace = 1, monitor:desc:{{ $homePrimaryDesc }}, default:true

@@ -64,9 +64,9 @@ for FILEPATH in "$DIRECTORY"/*.{jpg,jpeg,png,gif}; do
     echo "Optimizing and converting $NEW_FILENAME"
     optimizt "$NEW_FILEPATH" --webp
 
-    if $DELETE_ORIGINAL && [ "${NEW_FILENAME##*.}" != "svg" ]; then
-      echo "Deleting original file: $NEW_FILENAME"
-      rm "$NEW_FILEPATH"
+    if $DELETE_ORIGINAL && [ "${NEW_FILENAME##*.}" != "svg" ] && [ -e "${NEW_FILEPATH%.*}.webp" ]; then
+        echo "Deleting original file: $NEW_FILENAME"
+        rm "$NEW_FILEPATH"
     fi
   fi
 done

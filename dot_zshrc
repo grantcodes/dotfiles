@@ -91,7 +91,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # Add GitHub Copilot CLI
-eval "$(github-copilot-cli alias -- "$0")"
+eval "$(gh copilot alias -- "$0")"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

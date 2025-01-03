@@ -1,0 +1,46 @@
+window#launcher {
+  all: unset;
+}
+
+box.Applauncher {
+  border-radius: 11px;
+  margin: 1rem;
+  padding: 0.8rem;
+}
+
+box.Applauncher entry {
+  margin-bottom: 0.8rem;
+}
+
+box.Applauncher button {
+  min-width: 0;
+  min-height: 0;
+  padding: 0.5rem;
+}
+
+box.Applauncher button icon {
+  font-size: 3em;
+  margin-right: 0.3rem;
+}
+
+box.Applauncher button label.name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+box.Applauncher button label.description {
+  color: @foreground_80;
+}
+
+box.Applauncher box.not-found {
+  padding: 1rem;
+}
+box.Applauncher box.not-found icon {
+  font-size: 6em;
+  color: @foreground_60;
+}
+
+box.Applauncher box.not-found label {
+  color: @foreground_60;
+  font-size: 1.2em;
+}

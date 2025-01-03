@@ -1,0 +1,19 @@
+@import url('/home/grantcodes/.cache/matugen/colors-gtk.css');
+@import url('./widget/bar.css');
+@import url('./widget/notifications.css');
+@import url('./widget/notification-center.css');
+@import url('./widget/launcher.css');
+
+* {
+    font-size: 15px;
+    font-family: 'Rethink Sans', 'CaskaydiaCove Nerd Font', FontAwesome,
+      sans-serif;
+    font-weight: 600;
+}
+
+.surface {
+  background: @background_80;
+  color: @foreground;
+  font-weight: bold;
+}
+

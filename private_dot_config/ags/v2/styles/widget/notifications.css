@@ -1,0 +1,113 @@
+window.Notifications {
+    all: unset;
+}
+
+.Notifications__inner {
+    min-width: 500px;
+    margin-top: 8px;
+}
+
+.notification {
+    padding: 0;
+    margin: 0;
+}
+
+.notification:first-child .notification__surface {
+    margin-top: 0;
+}
+
+.notification:last-child .notification__surface {
+    margin-bottom: 0;
+}
+
+.notification__surface {
+    min-width: 500px;
+    border-radius: 12px;
+    margin: .5rem 0;
+    border: 1pt solid @foreground_10;
+}
+
+.notification.is-critical .notification__surface {
+    border: 1pt solid @error;
+}
+
+.notification.is-critical .notification-header__app-name {
+    color: @error;
+}
+
+.notification.is-critical .notification-header__app-icon {
+    color: @error;
+}
+
+.notification-header {
+    padding: .5rem;
+    color: @foreground_50;
+}
+
+.notification-header__app-icon {
+    margin: 0 .4rem;
+}
+
+.notification-header__app-name {
+    margin-right: .3rem;
+    font-weight: bold;
+}
+.notification-header__app-name:first-child {
+    margin-left: .4rem;
+}
+
+.notification-header__time {
+    margin: 0 .4rem;
+}
+
+.notification-header__close {
+    padding: .2rem;
+    min-width: 0;
+    min-height: 0;
+}
+
+.notification separator {
+    margin: 0 .4rem;
+    background-color: @foreground_10;
+}
+
+.notification-content {
+    margin: 1rem;
+    margin-top: .5rem;
+}
+
+.notification-content__summary {
+    font-size: 1.2em;
+    color: @foreground;
+}
+
+.notification-content__body {
+    color: @foreground_80;
+}
+
+.notification-content__image {
+    border: 1px solid @foreground_10;
+    margin-right: .5rem;
+    border-radius: 9px;
+    min-width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+}
+
+.notification-actions {
+    margin: 1rem;
+    margin-top: 0;
+}
+
+.notification-actions__button {
+    margin: 0 .3rem;
+}
+
+.notification-actions__button:first-child {
+    margin-left: 0;
+}
+
+.notification-actions__button:last-child {
+    margin-right: 0;
+}

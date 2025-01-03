@@ -1,0 +1,60 @@
+window.Bar {
+    padding: 4px 8px;
+}
+
+window.Bar > centerbox {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+window.Bar button {
+    border-radius: 8px;
+    margin: 2px;
+    border: 1px solid transparent;
+    background: transparent;
+    box-shadow: none;
+    color: inherit;
+    padding: 0;
+}
+
+window.Bar icon {
+    color: @foreground;
+    outline-color: @foreground;
+}
+
+.focused-client {
+   margin-left: 10px;
+}
+
+.focused-client__icon {
+    color: inherit;
+    margin-right: 4px;
+}
+
+window.Bar .workspace {
+    background-color: @foreground_20;
+    padding: 0; 
+    min-width: 0;
+    min-height: 0;
+    border-radius: 6px;
+    transition: .3s;
+}
+
+window.Bar .workspace label {
+    font-size: 0;
+    min-width: 10px;
+    min-height: 10px;
+    transition: .3s;
+}
+
+window.Bar .workspace.is-focused {
+    background-color: @foreground_60;
+}
+
+window.Bar .workspace.is-focused label {
+    min-width: 20px;
+}
+
+.notification-count__number {
+    margin-right: .2em;
+}

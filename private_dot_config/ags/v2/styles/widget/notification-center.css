@@ -1,0 +1,78 @@
+.NotificationCenter__inner {
+    min-width: 800px;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.notification-list {
+    min-width: 500px;
+}
+
+.notification-list .frame {
+    border: none;
+}
+
+.notification-list__header {
+    margin-bottom: 1rem;
+}
+
+.notification-list-no-notifications__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.time-and-date__info {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid @foreground_20;
+}
+
+.time-and-date__date {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.time-and-date__time {
+    font-size: 50px;
+    font-weight: 800;
+}
+
+calendar {
+   all:  unset;
+   padding-top: .2em;
+   padding-bottom: .2em;
+   color: @foreground_80;
+}
+
+calendar.highlight {
+    color: @foreground;
+}
+
+calendar:selected {
+    color: @secondary;
+    background-color: @foreground_20;
+    border-radius: 4px;
+}
+
+calendar.button,
+calendar.button:focus {
+    color: @foreground;
+}
+
+calendar.button:hover {
+    color: @secondary;
+}
+
+calendar.button:disabled {
+    color: @foreground_40;
+}
+
+calendar:indeterminate {
+    color: @foreground_40;
+}
+
+calendar.button.highlight {
+    color: @secondary;
+}

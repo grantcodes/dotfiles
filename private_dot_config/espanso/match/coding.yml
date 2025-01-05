@@ -1,0 +1,110 @@
+# Helpers for coding, web development and JavaScript
+# Heavily inspired by Alicia Sykes: https://github.com/Lissy93/espanso-config
+
+name: grantcodes-coding
+package_author: Grant Richmond <https://grant.codes>
+parent: default
+
+matches:
+  # JavaScript & Web Development
+
+  # Adds a multi-line comment, with cursor in the middle
+  - trigger: ':??'
+    replace: '/* $|$ */'
+
+  # Inserts a HTML block comment
+  - trigger: ':=='
+    replace: '<!-- $|$ -->'
+
+  # Inserts console.log statement
+  - trigger: ':con'
+    replace: 'console.log($|$);'
+
+  # JS console.log, will print variable name and value of a variable in your clipboard
+  - trigger: ':print'
+    replace: 'console.info({ {{clipboard}} });'
+    vars: [{ name: 'clipboard', type: 'clipboard' }]
+
+  # Inserts CSS variable
+  - trigger: ':var'
+    replace: 'var(--$|$)'
+
+  # Inserts common HTML elements
+  - trigger: :hr
+    replace: '<hr />'
+  - trigger: :br
+    replace: '<br />'
+  - trigger: :div
+    replace: '<div>$|$</div>'
+  - trigger: :span
+    replace: '<span>$|$</span>'
+  - trigger: :h1
+    replace: '<h1>$|$</h1>'
+  - trigger: :h2
+    replace: '<h2>$|$</h2>'
+  - trigger: :h3
+    replace: '<h3>$|$</h3>'
+  - trigger: :para
+    replace: '<p>$|$</p>'
+
+  # Inserts any custom HTML, XML or web component tag
+  - trigger: ':tag'
+    replace: '<{{html.element}}>$|$</{{html.element}}>'
+    vars:
+      - name: 'html'
+        type: form
+        params:
+          layout: "XML / HTML Element Inserter\nTag Name: {{element}}"
+          fields:
+            element:
+              type: text
+
+  - trigger: ':reactfc'
+    replace: |
+      import React from "react";
+
+      interface {{component.name}}Props {$|$}
+
+      const {{component.name}} = ({}: {{component.name}}Props) => (
+        <></>
+      );
+
+      export { {{component.name}} }
+    vars:
+      - name: 'component'
+        type: form
+        params:
+          layout: |
+            Component name:
+            [[name]]
+
+  - trigger: ':pr'
+    replace: |
+      ## :memo: Description
+
+      <!-- Short explanation of what has changed and why -->
+
+      This updates $|$
+
+      ## :woman_technologist: Technical Info
+
+      <!--
+      Add technical info.
+      Code added, removed, methods changed etc.
+      Probably a list to keep it easy to read.
+      --->
+
+      -
+
+      ## :detective: Testing Info
+
+      <!--
+      Add info about any new code tests added / removed / updated.
+      Add links to dev site with info on what to look at.
+      --->
+
+      - 
+
+      <!--
+      ## :camera_flash: Screenshots
+      --->

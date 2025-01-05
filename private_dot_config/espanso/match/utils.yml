@@ -1,0 +1,164 @@
+# Handy utilities, for use with Espanso, the open source cross-platform text expander
+# Heavily inspired by Alicia Sykes: https://github.com/Lissy93/espanso-config
+
+name: grantcodes-utils
+package_author: Grant Richmond <https://grant.codes>
+parent: default
+matches:
+  # Outputs public IP address
+  - trigger: ':ip'
+    replace: '{{output}}'
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+
+  # Outputs the current weather for your location
+  - trigger: ':weather'
+    replace: '{{output}}'
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'http://wttr.in/?format=3'"
+
+  # Auto close brackets, quotes and formatting modifiers, and put cursor in center
+  - trigger: ':('
+    replace: '($|$)'
+  - trigger: ':['
+    replace: '[$|$]'
+  - trigger: ':{'
+    replace: '{$|$}'
+  - trigger: ':<'
+    replace: '<$|$>'
+  - trigger: ':`'
+    replace: '`$|$`'
+  - trigger: ':"'
+    replace: '"$|$"'
+  - trigger: ':_'
+    replace: '_$|$_'
+  - trigger: ':*'
+    replace: '*$|$*'
+  - trigger: ':-'
+    replace: '-$|$-'
+
+  # Inserts a markdown code block
+  - trigger: :md-code
+    replace: "```\n$|$\n```"
+
+  # Inserts markdown collapsable section
+  - trigger: :md-collapse
+    replace: "\n<details>\n\t<summary>$|$</summary>\n\t<p></p>\n</details>"
+
+  # Outputs markdown link, with clipboard contents as the URL
+  - trigger: ':md-link'
+    replace: '[$|$]({{clipboard}})'
+    vars:
+      - name: 'clipboard'
+        type: 'clipboard'
+
+  # Creates a HTML anchor element, with clipboard contents as href
+  - trigger: ':html-link'
+    replace: '<a href="{{clipboard}}" />$|$</a>'
+    vars:
+      - name: 'clipboard'
+        type: 'clipboard'
+
+  # Outputs BB Code link, with clipboard contents as the URL
+  - trigger: ':bb-link'
+    replace: '[url={{clipboard}}]$|$[/url]'
+    vars:
+      - name: 'clipboard'
+        type: 'clipboard'
+
+  # Inserts common HTML elements
+  - trigger: :hr
+    replace: '<hr />'
+  - trigger: :br
+    replace: '<br />'
+  - trigger: :div
+    replace: '<div>$|$</div>'
+  - trigger: :span
+    replace: '<span>$|$</span>'
+  - trigger: :h1
+    replace: '<h1>$|$</h1>'
+  - trigger: :h2
+    replace: '<h2>$|$</h2>'
+  - trigger: :h3
+    replace: '<h3>$|$</h3>'
+  - trigger: :para
+    replace: '<p>$|$</p>'
+
+  # Inserts any custom HTML, XML or web component tag
+  - trigger: ':tag'
+    replace: '<{{html.element}}>$|$</{{html.element}}>'
+    vars:
+      - name: 'html'
+        type: form
+        params:
+          layout: "XML / HTML Element Inserter\nTag Name: {{element}}"
+          fields: { element: { type: text } }
+
+  # Outputs todays date (yyyy-mm-dd)
+  - trigger: :date
+    replace: '{{date}}'
+    vars:
+      - name: date
+        type: date
+        params:
+          format: '%Y-%m-%d'
+
+  # Outputs the current time (24hr)
+  - trigger: :time
+    replace: '{{time}}'
+    vars:
+      - name: time
+        type: date
+        params:
+          format: '%H:%M'
+
+  # Outputs the month and year (e.g. January 2020)
+  - trigger: :month
+    replace: '{{date}}'
+    vars:
+      - name: date
+        type: date
+        params:
+          format: '%B %Y'
+
+  # Easily inputs ASCII emojis from a dropdown
+  - trigger: :lenny
+    form: '{{smileys}}'
+    form_fields:
+      smileys:
+        type: choice
+        values:
+          - '¯\\_(ツ)_/¯'
+          - '(╯°□°）╯︵ ┻━┻'
+          - '( ͡ಠ ʖ̯ ͡ಠ)'
+          - '☉ ‿ ⚆'
+          - 'ʕ•ᴥ•ʔ'
+          - '⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆'
+          - '◤◢◣◥◤◢◣◥'
+          - '(づᵔ◡ᵔ)づ'
+          - '|ᵔ‿ᵔ|'
+          - '⤜(*﹏*)⤏'
+          - 'ツ'
+
+  # Ouputs MIT License short text
+  - trigger: :mit-short
+    replace: 'Licensed under MIT X11, © Grant Richmond {{year}}: https://grant.codes'
+    vars: [{ name: year, type: date, params: { format: '%Y' } }]
+
+  # Outputs git commit command, with cursor in the message block
+  - trigger: :commit
+    replace: git commit -m "$|$"
+
+  # Fetches a funny commit message from whatthecommit.com
+  - trigger: :wtc
+    replace: '{{output}}'
+    vars:
+      - name: output
+        type: shell
+        params: { cmd: 'curl -s whatthecommit.com/index.txt' }

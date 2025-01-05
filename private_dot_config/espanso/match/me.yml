@@ -1,0 +1,30 @@
+# Details about me.
+# Heavily inspired by Alicia Sykes: https://github.com/Lissy93/espanso-config
+
+name: grantcodes-me
+package_author: Grant Richmond <https://grant.codes>
+parent: default
+
+matches:
+  - triggers: ['me.name', ':name']
+    replace: 'Grant Richmond'
+
+  - triggers: ['me.email', 'me.mail', ':email', ':mail']
+    replace: 'mail@grant.codes'
+
+  - triggers: ['me.+email', 'me.+mail', ':+mail']
+    replace: 'mail+{{date}}@grant.codes'
+    vars:
+      - name: date
+        type: date
+        params:
+          format: '%Y-%m-%d'
+
+  - triggers: ['me.web', ':web']
+    replace: 'https://grant.codes'
+
+  - triggers: ['me.gh', 'me.github', ':gh', ':github']
+    replace: 'https://github.com/grantcodes'
+
+  - triggers: [':kr', 'me.sig', ':cheers']
+    replace: "Cheers,  \nGrant\n"

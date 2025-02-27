@@ -10,7 +10,7 @@ restart_ags() {
 disable_laptop_screen() {
   echo "Disabling laptop screen"
   # hyprctl keyword monitor "desc:AU Optronics 0xD291, disable"
-  # hyprctl keyword monitor "desc:BOE 0x0BCA, disable"
+  hyprctl keyword monitor "desc:BOE 0x0BCA, disable"
 }
 
 enable_laptop_screen() {
@@ -53,7 +53,7 @@ if [ $# -gt 0 ]; then
   # If the first param is "lidclose", disable the laptop screen
   if [ $1 == "lidclose" ]; then
     # But only disable if there is more than one monitor in hyprland
-    monitor_count=$(hyprctl monitor list | wc -l)
+    monitor_count=$(hyprctl monitors -j | jq length)
     if [ $monitor_count -gt 1 ]; then
       disable_laptop_screen
     else

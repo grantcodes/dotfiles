@@ -28,5 +28,8 @@ hyprpaper &>/dev/null &
 sleep 1
 hyprctl hyprpaper unload "$bg"
 
-killall ags
-ags &
+# killall ags
+# ags &
+
+# Using dms shell now to set the wallpaper
+dms ipc wallpaper set $bg

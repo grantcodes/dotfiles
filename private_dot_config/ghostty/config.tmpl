@@ -2,20 +2,27 @@
 
 # General
 quit-after-last-window-closed = true
-
-# Quick Terminal
-keybind = global:ctrl+z=toggle_quick_terminal
-quick-terminal-screen = mouse
+shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo
 
 # Font
-font-family = CaskaydiaCove Nerd Font Mono
+font-family = CaskaydiaCove Nerd font
+
+{{ if eq .chezmoi.os "darwin" -}}
 font-size = 15
+{{ else -}}
+font-size = 12
+{{ end -}
 
 # Window
-window-padding-x=12
-window-padding-y=12
-# background-opacity = 0.9
+window-padding-x = 12
+window-padding-y = 12
+background-opacity = 0.8
 
+
+{{ if eq .chezmoi.os "linux" -}}
+# Colors from DMS
+config-file = ./config-dankcolors
+{{ else -}}
 # Catppuccin Mocha colors - https://github.com/catppuccin/ghostty
 palette = 0=#45475a
 palette = 1=#f38ba8
@@ -39,3 +46,5 @@ cursor-color = f5e0dc
 cursor-text = 1e1e2e
 selection-background = 353749
 selection-foreground = cdd6f4
+{{ end -}}
+

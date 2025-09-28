@@ -1,10 +1,10 @@
-import { Gtk } from "astal/gtk3";
+import Gtk from 'gi://Gtk?version=4.0'
 
 interface LauncherItemProps {
-  icon?: string;
-  title: string;
-  description?: string;
-  onSelected(): void;
+  icon?: string
+  title: string
+  description?: string
+  onSelected(): void
 }
 
 const LauncherItem = ({
@@ -13,17 +13,17 @@ const LauncherItem = ({
   description,
   onSelected,
 }: LauncherItemProps) => (
-  <button className="AppButton" onClicked={onSelected}>
+  <Gtk.Button class="AppButton" onClicked={onSelected}>
     <box>
-      {icon && <icon icon={icon} />}
-      <box valign={Gtk.Align.CENTER} vertical>
-        <label className="name" truncate xalign={0} label={title} />
+      {icon && <Gtk.Image icon_name={icon} />}
+      <box valign={Gtk.Align.CENTER} orientation={Gtk.Orientation.VERTICAL}>
+        <label class="name" truncate xalign={0} label={title} />
         {description && (
-          <label className="description" wrap xalign={0} label={description} />
+          <label class="description" wrap xalign={0} label={description} />
         )}
       </box>
     </box>
-  </button>
-);
+  </Gtk.Button>
+)
 
-export { LauncherItem };
+export { LauncherItem }

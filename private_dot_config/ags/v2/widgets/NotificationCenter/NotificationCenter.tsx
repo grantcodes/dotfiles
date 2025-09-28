@@ -1,40 +1,43 @@
-import { Variable, bind } from "astal";
-import { App, Astal, type Gdk, Gtk } from "astal/gtk3";
-import { NotificationList } from "./NotificationList";
-import { TimeAndDate } from "./TimeAndDate";
+import app from 'ags/gtk4/app'
+import Gtk from 'gi://Gtk?version=4.0'
+import Astal from 'gi://Astal?version=4.0'
+import { NotificationList } from './NotificationList'
+import { TimeAndDate } from './TimeAndDate'
 
-const { TOP } = Astal.WindowAnchor;
-const { START, CENTER } = Gtk.Align;
+const { TOP } = Astal.WindowAnchor
+const { START, CENTER } = Gtk.Align
 
-const notificationCenterVisible = Variable<boolean>(false);
+let win: Astal.Window
 
-const NotificationCenter = (monitor: Gdk.Monitor) => (
+const NotificationCenter = (monitor: any) => (
   <window
-    className="NotificationCenter"
+    $={(ref) => (win = ref)}
+    class="NotificationCenter"
     gdkmonitor={monitor}
     exclusivity={Astal.Exclusivity.NORMAL}
     anchor={TOP}
-    visible={true}
     name="NotificationCenter"
-    application={App}
+    application={app}
   >
-    <revealer
+    {/* TODO: Add animation */}
+    {/* <Gtk.Revealer
       transitionType={Gtk.RevealerTransitionType.SLIDE_DOWN}
-      revealChild={bind(notificationCenterVisible)}
+      revealChild={win.visible}
+    > */}
+    <box
+      class="NotificationCenter__inner surface"
+      hexpand
+      valign={START}
+      halign={CENTER}
+      spacing={16}
     >
-      <box
-        className="NotificationCenter__inner surface"
-        hexpand
-        valign={START}
-        halign={CENTER}
-        spacing={16}
-      >
-        <NotificationList />
-        <Gtk.Separator visible orientation={Gtk.Orientation.VERTICAL} />
-        <TimeAndDate />
-      </box>
-    </revealer>
+      {/* TODO: Fix notification list */}
+      <NotificationList />
+      <Gtk.Separator visible orientation={Gtk.Orientation.VERTICAL} />
+      <TimeAndDate />
+    </box>
+    {/* </Gtk.Revealer> */}
   </window>
-);
+)
 
-export { NotificationCenter, notificationCenterVisible };
+export { NotificationCenter, win as notificationCenterWindow }

@@ -1,23 +1,20 @@
-import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
-import { hasNotifications } from "../../Notifications";
+import Gtk from 'gi://Gtk?version=4.0'
 
 const NotificationListNoNotifications = () => (
   <box
-    className="notification-list-no-notifications"
-    vertical
+    class="notification-list-no-notifications"
+    orientation={Gtk.Orientation.VERTICAL}
     valign={Gtk.Align.CENTER}
     halign={Gtk.Align.CENTER}
     vexpand
     hexpand
-    visible={bind(hasNotifications).as((n) => !n)}
   >
-    <icon
-      icon="notification-disabled-symbolic"
-      className="notification-list-no-notifications__icon"
+    <image
+      iconName="notification-disabled-symbolic"
+      class="notification-list-no-notifications__icon"
     />
     <label label="You're all up to date" />
   </box>
-);
+)
 
-export { NotificationListNoNotifications };
+export { NotificationListNoNotifications }

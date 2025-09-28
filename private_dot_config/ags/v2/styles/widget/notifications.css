@@ -23,7 +23,7 @@ window.Notifications {
 .notification__surface {
     min-width: 500px;
     border-radius: 12px;
-    margin: .5rem 0;
+    margin: 0;
     border: 1pt solid @foreground_10;
 }
 

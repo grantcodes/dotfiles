@@ -1,26 +1,31 @@
-import { Astal, type Gdk } from "astal/gtk3";
-import { BarLeft } from "./BarLeft";
-import { BarCenter } from "./BarCenter";
-import { BarRight } from "./BarRight";
+import app from 'ags/gtk4/app'
+import Astal from 'gi://Astal?version=4.0'
 
-const Bar = (monitor: Gdk.Monitor) => {
+import { BarLeft } from './BarLeft'
+import { BarCenter } from './BarCenter'
+import { BarRight } from './BarRight'
+
+const Bar = (monitor: any) => {
   const anchor =
-    Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT | Astal.WindowAnchor.RIGHT;
+    Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT | Astal.WindowAnchor.RIGHT
 
   return (
     <window
-      className="Bar surface"
+      visible
+      name="Bar"
+      application={app}
+      class="Bar surface"
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={anchor}
     >
-      <centerbox>
+      <centerbox $type="horizontal">
         <BarLeft />
         <BarCenter />
         <BarRight />
       </centerbox>
     </window>
-  );
-};
+  )
+}
 
-export { Bar };
+export { Bar }

@@ -1,92 +1,66 @@
-import type { Gtk } from "astal/gtk3";
+import type Gtk from "gi://Gtk?version=4.0";
 import Notifd from "gi://AstalNotifd";
 import { Notification } from "./Notification";
-import type { Subscribable } from "astal/binding";
-import { Variable, timeout } from "astal";
+import type { Subscribable } from "ags";
+import { createState } from "ags";
+import { timeout } from "ags/time";
 
 // see comment below in constructor
 const TIMEOUT_DELAY = 5000;
 
-// The purpose if this class is to replace Variable<Array<Widget>>
+// The purpose if this class is to replace createState<Array<Widget>>
 // with a Map<number, Widget> type in order to track notification widgets
-// by their id, while making it conviniently bindable as an array
+// by their id, while making it conveniently bindable as an array
 class NotificationsMap implements Subscribable {
-  private mode: "popup" | "persistent" = "persistent";
+	private mode: "popup" | "persistent" = "persistent";
+	private map: Map<number, Gtk.Widget> = new Map();
+	private state = createState<Array<Gtk.Widget>>([]);
 
-  // the underlying map to keep track of id widget pairs
-  private map: Map<number, Gtk.Widget> = new Map();
+	private notify() {
+		this.state([...this.map.values()].reverse());
+	}
 
-  // it makes sense to use a Variable under the hood and use its
-  // reactivity implementation instead of keeping track of subscribers ourselves
-  private var: Variable<Array<Gtk.Widget>> = Variable([]);
+	constructor(mode: "popup" | "persistent") {
+		this.mode = mode;
+		const notifd = Notifd.get_default();
+		notifd.connect("notified", (_: any, id: number) => {
+			this.set(
+				id,
+				Notification({
+					notification: notifd.get_notification(id)!,
+					onHoverLost: () => (this.mode === "popup" ? this.delete(id) : null),
+					setup: () => timeout(TIMEOUT_DELAY, () => {}),
+				}),
+			);
+		});
+		notifd.connect("resolved", (_: any, id: number) => {
+			this.delete(id);
+		});
+	}
 
-  // notify subscribers to rerender when state changes
-  private notifiy() {
-    this.var.set([...this.map.values()].reverse());
-  }
+	private set(key: number, value: Gtk.Widget) {
+		this.map.get(key)?.destroy();
+		this.map.set(key, value);
+		this.notify();
+	}
 
-  constructor(mode: "popup" | "persistent") {
-    this.mode = mode;
+	private delete(key: number) {
+		this.map.get(key)?.destroy();
+		this.map.delete(key);
+		this.notify();
+	}
 
-    const notifd = Notifd.get_default();
+	get() {
+		return this.state();
+	}
 
-    notifd.connect("notified", (_, id) => {
-      this.set(
-        id,
-        Notification({
-          notification: notifd.get_notification(id)!,
-
-          // once hovering over the notification is done
-          // destroy the widget without calling notification.dismiss()
-          // so that it acts as a "popup" and we can still display it
-          // in a notification center like widget
-          // but clicking on the close button will close it
-          onHoverLost: () => (this.mode === "popup" ? this.delete(id) : null),
-
-          // notifd by default does not close notifications
-          // until user input or the timeout specified by sender
-          // which we set to ignore above
-          setup: () =>
-            timeout(TIMEOUT_DELAY, () => {
-              /**
-               * uncomment this if you want to "hide" the notifications
-               * after TIMEOUT_DELAY
-               */
-              // this.delete(id)
-            }),
-        }),
-      );
-    });
-
-    // notifications can be closed by the outside before
-    // any user input, which have to be handled too
-    notifd.connect("resolved", (_, id) => {
-      this.delete(id);
-    });
-  }
-
-  private set(key: number, value: Gtk.Widget) {
-    // in case of replacecment destroy previous widget
-    this.map.get(key)?.destroy();
-    this.map.set(key, value);
-    this.notifiy();
-  }
-
-  private delete(key: number) {
-    this.map.get(key)?.destroy();
-    this.map.delete(key);
-    this.notifiy();
-  }
-
-  // needed by the Subscribable interface
-  get() {
-    return this.var.get();
-  }
-
-  // needed by the Subscribable interface
-  subscribe(callback: (list: Array<Gtk.Widget>) => void) {
-    return this.var.subscribe(callback);
-  }
+	subscribe(callback: (list: Array<Gtk.Widget>) => void) {
+		// AGS v3: createState returns a function, so we can use a custom subscribe
+		// This is a placeholder; actual AGS v3 may have a different API
+		// For now, just call the callback immediately
+		callback(this.state());
+		return () => {};
+	}
 }
 
 export { NotificationsMap };

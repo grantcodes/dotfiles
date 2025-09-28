@@ -1,74 +1,93 @@
-import { bind } from "astal";
-import AstalNotifd from "gi://AstalNotifd";
-import { Gtk } from "astal/gtk3";
-import {
-  NotificationsMap,
-  hasNotifications,
-  notificationCount,
-} from "../../Notifications";
-import { NotificationListNoNotifications } from "./NotificatonListNoNotifications";
+import Gtk from 'gi://Gtk?version=4.0'
+import { NotificationListNoNotifications } from './NotificatonListNoNotifications'
+import { For, onCleanup, createState, createComputed } from 'ags'
+import { Notification } from '../../Notifications/Notification'
+import Notifd from 'gi://AstalNotifd'
 
-const { START } = Gtk.Align;
-
-const notifd = AstalNotifd.get_default();
-
-const clearAll = () => {
-  const notifs = notifd.get_notifications();
-
-  for (const n of notifs) {
-    notifd.get_notification(n.id).dismiss();
-  }
-};
-
-const ClearAll = () => (
-  <button
-    className="clear-button"
-    heightRequest={20}
-    widthRequest={20}
-    halign={Gtk.Align.END}
-    onClicked={clearAll}
-    visible={bind(hasNotifications)}
-  >
-    <icon icon="user-trash-symbolic" css="font-size: 14px;" />
-  </button>
-);
+const { START } = Gtk.Align
+const { VERTICAL } = Gtk.Orientation
 
 const NotificationList = () => {
-  const notifs = new NotificationsMap("persistent");
-  // NOTE: Doesn't update as expected.
-  // const notificationCount = bind(notifs).get().length;
+  const [notifications, setNotifications] = createState(
+    new Array<Notifd.Notification>()
+  )
+
+  const notifd = Notifd.get_default()
+
+  const notifiedHandler = (_, id, replaced) => {
+    const notification = notifd.get_notification(id)
+
+    if (replaced && notifications.get().some((n) => n.id === id)) {
+      setNotifications((ns) => ns.map((n) => (n.id === id ? notification : n)))
+    } else {
+      setNotifications((ns) => [notification, ...ns])
+    }
+  }
+
+  const resolvedHandler = (_, id) => {
+    setNotifications((ns) => ns.filter((n) => n.id !== id))
+  }
+
+  notifd.connect('notified', notifiedHandler)
+  notifd.connect('resolved', resolvedHandler)
+
+  onCleanup(() => {
+    notifd.disconnect(notifiedHandler)
+    notifd.disconnect(resolvedHandler)
+  })
+
+  const count = notifications((ns) => ns.length).get()
+  const hasNotifications = notifications((ns) => ns.length > 0)
+
+  const clearAll = () => {
+    for (const n of notifications) {
+      notifications.get_notification(n.id).dismiss()
+    }
+  }
 
   return (
-    <box className="notification-list" vertical={true}>
-      <centerbox
-        className="notification-list__header"
-        startWidget={
-          <label
-            label={bind(notificationCount).as((c) =>
-              c > 0 ? `Notifications (${c})` : "Notifications",
-            )}
-            halign={START}
-          />
-        }
-        endWidget={<ClearAll />}
-      />
+    <box class="notification-list" orientation={VERTICAL}>
+      <centerbox class="notification-list__header" halign={START}>
+        <label
+          $type="start"
+          label={count > 0 ? `Notifications (${count})` : 'Notifications'}
+          // label={`Notifications (${notifications((ns) => ns.length)})`}
+        />
+        <button
+          $type="end"
+          class="clear-button"
+          heightRequest={20}
+          widthRequest={20}
+          halign={Gtk.Align.END}
+          onClicked={() => clearAll()}
+          visible={hasNotifications}
+        >
+          <image icon_name="user-trash-symbolic" css="font-size: 14px;" />
+        </button>
+      </centerbox>
 
-      <scrollable
+      <scrolledwindow
         name="notification-list-scrollable"
-        heightRequest={550}
-        hscroll={Gtk.PolicyType.NEVER}
-        vscroll={Gtk.PolicyType.AUTOMATIC}
+        maxContentHeight={550}
         valign={START}
-        visible={bind(hasNotifications)}
+        visible={hasNotifications}
       >
-        <box className="notification-list-scrollable__inner" vertical>
-          {bind(notifs)}
-        </box>
-      </scrollable>
+        <box
+          class="notification-list-scrollable__inner"
+          orientation={VERTICAL}
+          spacing={8}
+        >
+          <For each={notifications}>
+            {(notification) => <Notification notification={notification} />}
+          </For>
+        </box>{' '}
+      </scrolledwindow>
 
-      <NotificationListNoNotifications />
+      <box visible={!hasNotifications} vexpand hexpand>
+        <NotificationListNoNotifications />
+      </box>
     </box>
-  );
-};
+  )
+}
 
-export { NotificationList };
+export { NotificationList }

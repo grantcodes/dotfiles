@@ -1,45 +1,44 @@
-import { Gtk } from "astal/gtk3";
-import { bind, type Binding, Variable } from "astal";
+import Gtk from 'gi://Gtk?version=4.0'
+import { createState, With } from 'ags'
 
 interface BarRevealerProps {
-  label: string | JSX.Element;
-  labelOpen?: string | JSX.Element;
-  className?: string;
-  child: JSX.Element;
-  transitionType?: Gtk.RevealerTransitionType;
-  visible?: boolean | Binding<boolean>;
+  label: string | JSX.Element
+  labelOpen?: string | JSX.Element
+  class?: string
+  children: JSX.Element
+  transitionType?: any
+  visible?: boolean | any
 }
 
-const { SLIDE_LEFT, SLIDE_RIGHT } = Gtk.RevealerTransitionType;
+const { SLIDE_LEFT, SLIDE_RIGHT } = Gtk.RevealerTransitionType
 
 const BarRevealer = ({
-  child,
+  children,
   label,
   labelOpen,
-  className = "",
+  class: className = '',
   visible = true,
   transitionType = SLIDE_RIGHT,
 }: BarRevealerProps) => {
-  const open = Variable<boolean>(false);
-  const buttonLabel: Variable<string | JSX.Element> = Variable.derive(
-    [open],
-    (isOpen) => (isOpen ? (labelOpen ?? label) : label),
-  );
+  const [open, setOpen] = createState(false)
+
+  function onToggle() {
+    setOpen((isOpen) => !isOpen)
+  }
 
   const revealerButton = (
-    <button onClick={() => open.set(!open.get())}>{bind(buttonLabel)}</button>
-  );
+    <button onClicked={onToggle}>{open ? labelOpen ?? label : label}</button>
+  )
 
-  // TODO: Button label if an icon can get destroyed and break when trying to change back
   return (
-    <box className={className} visible={visible}>
+    <box class={className} visible={visible}>
       {transitionType === SLIDE_LEFT && revealerButton}
-      <revealer revealChild={bind(open)} transitionType={transitionType}>
-        {child}
+      <revealer revealChild={open} transitionType={transitionType}>
+        {children}
       </revealer>
       {transitionType === SLIDE_RIGHT && revealerButton}
     </box>
-  );
-};
+  )
+}
 
-export { BarRevealer };
+export { BarRevealer }

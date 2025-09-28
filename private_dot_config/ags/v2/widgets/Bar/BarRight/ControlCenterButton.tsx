@@ -1,9 +1,13 @@
-import { controlCenterVisible } from "../../ControlCenter";
+import { controlCenterWindow } from '../../ControlCenter'
 
 const ControlCenterButton = () => (
-  <button onClick={() => controlCenterVisible.set(!controlCenterVisible.get())}>
-    <icon icon="configuration-symbolic" />
+  <button
+    onClicked={() => {
+      controlCenterWindow.visible = !controlCenterWindow.visible
+    }}
+  >
+    <image icon_name="configuration-symbolic" />
   </button>
-);
+)
 
-export { ControlCenterButton };
+export { ControlCenterButton }

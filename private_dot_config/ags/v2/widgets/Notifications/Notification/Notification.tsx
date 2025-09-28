@@ -1,27 +1,27 @@
-import { Gtk } from "astal/gtk3";
-import type { EventBox } from "astal/gtk3/widget";
-import Notifd from "gi://AstalNotifd";
-import { NotificationHeader } from "./NotificationHeader";
-import { NotificationContent } from "./NotificationContent";
-import { NotificationActions } from "./NotificationActions";
+import Gtk from 'gi://Gtk?version=4.0'
+import type { EventBox } from 'ags/gtk4/widget'
+import Notifd from 'gi://AstalNotifd'
+import { NotificationHeader } from './NotificationHeader'
+import { NotificationContent } from './NotificationContent'
+import { NotificationActions } from './NotificationActions'
 
 const urgency = (n: Notifd.Notification) => {
-  const { LOW, NORMAL, CRITICAL } = Notifd.Urgency;
+  const { LOW, NORMAL, CRITICAL } = Notifd.Urgency
   // match operator when?
   switch (n.urgency) {
     case LOW:
-      return "is-low";
+      return 'is-low'
     case CRITICAL:
-      return "is-critical";
+      return 'is-critical'
     default:
-      return "is-normal";
+      return 'is-normal'
   }
-};
+}
 
 interface NotificationProps {
-  setup(self: EventBox): void;
-  onHoverLost(self: EventBox): void;
-  notification: Notifd.Notification;
+  setup(self: EventBox): void
+  onHoverLost(self: EventBox): void
+  notification: Notifd.Notification
 }
 
 const Notification = ({
@@ -29,18 +29,21 @@ const Notification = ({
   onHoverLost,
   setup,
 }: NotificationProps) => (
-  <eventbox
-    className={`notification ${urgency(n)}`}
+  <box
+    class={`notification ${urgency(n)}`}
     setup={setup}
-    onHoverLost={onHoverLost}
+    // onHoverLost={onHoverLost}
   >
-    <box vertical className="notification__surface surface">
+    <box
+      orientation={Gtk.Orientation.VERTICAL}
+      class="notification__surface surface"
+    >
       <NotificationHeader notification={n} />
       <Gtk.Separator visible />
       <NotificationContent notification={n} />
       <NotificationActions notification={n} />
     </box>
-  </eventbox>
-);
+  </box>
+)
 
-export { Notification };
+export { Notification }

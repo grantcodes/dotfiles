@@ -1,14 +1,16 @@
-import { Gtk } from "astal/gtk3";
-import { Clock } from "./Clock";
-import { Media } from "./Media";
-import { NotificationCount } from "./NotificationCount";
+import Gtk from 'gi://Gtk?version=4.0'
+import { Clock } from './Clock'
+// TODO: Add Media
+// import { Media } from './Media'
+// TODO: Add NotificationCount
+// import { NotificationCount } from './NotificationCount'
 
 const BarCenter = () => (
-  <box hexpand halign={Gtk.Align.CENTER} spacing={8}>
-    <NotificationCount />
+  <box hexpand halign={Gtk.Align.CENTER} spacing={8} $type="center">
+    {/* <NotificationCount /> */}
     <Clock />
-    <Media />
+    {/* <Media /> */}
   </box>
-);
+)
 
-export { BarCenter };
+export { BarCenter }

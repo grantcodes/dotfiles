@@ -1,17 +1,21 @@
 {
-  "name": "astal-config",
-  "version": "1.0.0",
-  "description": "My personal astal desktop setup",
-  "main": "app.ts",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "grant.codes",
-  "license": "ISC",
-  "devDependencies": {
-    "biome": "^0.3.3"
-  }
+	"name": "astal-config",
+	"version": "1.0.0",
+	"description": "My personal astal desktop setup",
+	"main": "app.ts",
+	"directories": {
+		"lib": "lib"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "grant.codes",
+	"license": "ISC",
+	"devDependencies": {
+		"biome": "^0.3.3"
+	},
+	"dependencies": {
+		"astal": "/usr/share/astal/gjs",
+		"typescript": "5.8.3"
+	}
 }

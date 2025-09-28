@@ -1,12 +1,14 @@
-import { Gtk } from "astal/gtk3";
-import { Workspaces } from "./Workspaces";
-import { FocusedClient } from "./FocusedClient";
+import Gtk from 'gi://Gtk?version=4.0'
+import { Workspaces } from './Workspaces'
+import { FocusedClient } from './FocusedClient'
+import { AssistantButton } from './AssistantButton'
 
 const BarLeft = () => (
-  <box className="bar__left" hexpand halign={Gtk.Align.START}>
+  <box class="bar__left" hexpand halign={Gtk.Align.START} $type="start">
+    <AssistantButton />
     <Workspaces />
     <FocusedClient />
   </box>
-);
+)
 
-export { BarLeft };
+export { BarLeft }

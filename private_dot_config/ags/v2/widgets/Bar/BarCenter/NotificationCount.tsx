@@ -1,30 +1,35 @@
-import { bind } from "astal";
-// import { Gtk } from "astal/gtk3";
+import { createBinding } from 'ags'
+import Gtk from 'gi://Gtk?version=4.0'
 // import { BarRevealer } from "../util/BarRevealer";
-import { hasNotifications, notificationCount } from "../../Notifications";
-import { notificationCenterVisible } from "../../NotificationCenter";
+import { hasNotifications, notificationCount } from '../../Notifications'
+import { notificationCenterWindow } from '../../NotificationCenter'
 
 const NotificationCount = () => {
   return (
-    <box className="notification-count" visible={bind(hasNotifications)}>
-      <button
-        onClick={() =>
-          notificationCenterVisible.set(!notificationCenterVisible.get())
-        }
+    <box
+      class="notification-count"
+      visible={createBinding(hasNotifications).as(Boolean)}
+    >
+      <Gtk.Button
+        onClicked={() => {
+          notificationCenterWindow.visible = !notificationCenterWindow.visible
+        }}
       >
         <box>
           <label
-            className="notification-count__number"
-            label={bind(notificationCount).as((count) => `${count}`)}
+            class="notification-count__number"
+            label={createBinding(notificationCount).as(
+              (count: number) => `${count}`
+            )}
           />
-          <icon
-            className="notification-count__icon"
-            icon="notification-inactive"
+          <Gtk.Image
+            class="notification-count__icon"
+            icon_name="notification-inactive"
           />
         </box>
-      </button>
+      </Gtk.Button>
     </box>
-  );
-};
+  )
+}
 
-export { NotificationCount };
+export { NotificationCount }

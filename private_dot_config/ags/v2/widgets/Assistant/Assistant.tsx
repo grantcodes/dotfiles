@@ -1,24 +1,30 @@
-import { Variable, bind } from "astal";
-import { App, Astal, type Gdk } from "astal/gtk3";
+import { createState } from 'ags'
+import app from 'ags/gtk4/app'
+import Gtk from 'gi://Gtk?version=4.0'
+import Astal from 'gi://Astal?version=4.0'
 
-const { TOP, LEFT, BOTTOM } = Astal.WindowAnchor;
+// import { WebView } from '../util/WebView'
 
-const assistantVisible = Variable<boolean>(false);
+const { TOP, LEFT, BOTTOM } = Astal.WindowAnchor
 
-const Assistant = (monitor: Gdk.Monitor) => (
+let win: Astal.Window
+
+const Assistant = (monitor: any) => (
   <window
-    className="Assistant surface"
+    $={(ref) => (win = ref)}
+    class="Assistant surface"
     gdkmonitor={monitor}
     exclusivity={Astal.Exclusivity.NORMAL}
     anchor={TOP | LEFT | BOTTOM}
-    visible={bind(assistantVisible)}
     name="Assistant"
-    application={App}
+    application={app}
+    keymode={Astal.Keymode.ON_DEMAND}
   >
-    <box>
+    <box widthRequest={400}>
       <label label="This is the Assistant" />
+      {/* <WebView width={400} url="https://librechat.grant.codes" /> */}
     </box>
   </window>
-);
+)
 
-export { Assistant, assistantVisible };
+export { Assistant, win as assistantWindow }

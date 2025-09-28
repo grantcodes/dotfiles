@@ -1,21 +1,23 @@
-import { bind } from "astal";
-import AstalBattery from "gi://AstalBattery";
-import { BarRevealer } from "../util/BarRevealer";
+import { createBinding } from 'ags'
+import BatteryService from 'gi://AstalBattery'
+import { BarRevealer } from '../util/BarRevealer'
 
 const Battery = () => {
-  const bat = AstalBattery.get_default();
+  const bat = BatteryService.get_default()
 
   return (
     <BarRevealer
-      className="Battery"
-      visible={bind(bat, "isPresent")}
-      label={<icon icon={bind(bat, "batteryIconName")} />}
+      class="Battery"
+      visible={createBinding(bat, 'isPresent')}
+      label={<image icon_name={createBinding(bat, 'batteryIconName')} />}
     >
       <label
-        label={bind(bat, "percentage").as((p) => `${Math.floor(p * 100)} %`)}
+        label={createBinding(bat, 'percentage').as(
+          (p: number) => `${Math.floor(p * 100)} %`
+        )}
       />
     </BarRevealer>
-  );
-};
+  )
+}
 
-export { Battery };
+export { Battery }

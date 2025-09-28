@@ -1,4 +1,4 @@
+export * from "./helpers";
+export * from "./Notification";
 export * from "./Notifications";
 export * from "./NotificationsMap";
-export * from "./Notification";
-export * from "./helpers";

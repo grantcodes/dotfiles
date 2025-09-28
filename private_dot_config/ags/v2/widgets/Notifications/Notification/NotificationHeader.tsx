@@ -1,45 +1,48 @@
-import { GLib } from "astal";
-import { Gtk } from "astal/gtk3";
-import type Notifd from "gi://AstalNotifd";
+import GLib from 'gi://GLib'
+import Gtk from 'gi://Gtk?version=4.0'
+import Gdk from 'gi://Gdk?version=4.0'
+import Pango from 'gi://Pango'
 
-const time = (time: number, format = "%H:%M") =>
-  GLib.DateTime.new_from_unix_local(time).format(format)!;
+const time = (time: number, format = '%H:%M') =>
+  GLib.DateTime.new_from_unix_local(time).format(format)!
 
 interface NotificationHeaderProps {
-  notification: Notifd.Notification;
+  notification: any
 }
-const { START, END } = Gtk.Align;
+const { START, END } = Gtk.Align
+
+function isIcon(icon?: string | null) {
+  const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default()!)
+  return icon && iconTheme.has_icon(icon)
+}
 
 const NotificationHeader = ({ notification: n }: NotificationHeaderProps) => {
   return (
-    <box className="notification-header">
-      {(n.appIcon || n.desktopEntry) && (
-        <icon
-          className="notification-header__app-icon"
+    <box class="notification-header">
+      {(n.appIcon || isIcon(n.desktopEntry)) && (
+        <image
+          class="notification-header__app-icon"
           visible={Boolean(n.appIcon || n.desktopEntry)}
-          icon={n.appIcon || n.desktopEntry}
+          iconName={n.appIcon || n.desktopEntry}
         />
       )}
       <label
-        className="notification-header__app-name"
+        class="notification-header__app-name"
         halign={START}
-        truncate
-        label={n.appName || "Unknown"}
+        ellipsize={Pango.EllipsizeMode.END}
+        label={n.appName || 'Unknown'}
       />
       <label
-        className="notification-header__time"
+        class="notification-header__time"
         hexpand
         halign={END}
         label={time(n.time)}
       />
-      <button
-        className="notification-header__close"
-        onClicked={() => n.dismiss()}
-      >
-        <icon icon="window-close-symbolic" />
+      <button class="notification-header__close" onClicked={() => n.dismiss()}>
+        <image iconName="window-close-symbolic" />
       </button>
     </box>
-  );
-};
+  )
+}
 
-export { NotificationHeader };
+export { NotificationHeader }

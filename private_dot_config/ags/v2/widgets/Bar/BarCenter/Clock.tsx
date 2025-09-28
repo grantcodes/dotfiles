@@ -1,22 +1,21 @@
-import { Variable, GLib } from "astal";
-import { notificationCenterVisible } from "../../NotificationCenter";
+import GLib from 'gi://GLib'
+import { createPoll } from 'ags/time'
+import { notificationCenterWindow } from '../../NotificationCenter'
 
-const Clock = ({ format = "%H:%M" }) => {
-  const time = Variable<string>("").poll(
-    1000,
-    () => GLib.DateTime.new_now_local().format(format)!,
-  );
+const Clock = ({ format = '%H:%M' }) => {
+  const time = createPoll('', 1000, () => {
+    return GLib.DateTime.new_now_local().format(format)!
+  })
 
   return (
     <button
-      className="bar-clock"
-      onDestroy={() => time.drop()}
-      label={time()}
-      onClick={() =>
-        notificationCenterVisible.set(!notificationCenterVisible.get())
-      }
+      class="bar-clock"
+      label={time}
+      onClicked={() => {
+        notificationCenterWindow.visible = !notificationCenterWindow.visible
+      }}
     />
-  );
-};
+  )
+}
 
-export { Clock };
+export { Clock }

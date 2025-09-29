@@ -15,43 +15,28 @@ else
 fi
 
 # Aliases
-
 alias docker-compose="docker compose --compatibility $@"
+
+# open() {
+#   xdg-open "$@" >/dev/null 2>&1 &
+# }
+
+# Directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Git
+alias g='git'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
+alias gcad='git commit -a --amend'
 
 
 if [ "$(tty)" = "/dev/tty1" ];then
   exec Hyprland
 fi
 
-
-# Custom git helpers for Kinsta dev work
-kgf() {
-  echo "Creating feature: $1"
-  git checkout master
-  git pull
-  git checkout -b feature/$1
-}
-
-kgb() {
-  echo "Creating fix: $1"
-  git checkout master
-  git pull
-  git checkout -b fix/$1
-}
-
-kgm() {
-  echo "Creating maintenance: $1"
-  git checkout master
-  git pull
-  git checkout -b maintenance/$1
-}
-
-kgd() {
-  echo "Creating docs: $1"
-  git checkout master
-  git pull
-  git checkout -b docs/$1
-}
 
 switchyubi() {
   # Thanks https://glenngillen.com/setting-up-multiple-yubikeys/.
@@ -89,6 +74,23 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Lets go.
 antigen apply
+
+# File system aliases after plugins
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+alias cd="zd"
+zd() {
+  if [ $# -eq 0 ]; then
+    builtin cd ~ && return
+  elif [ -d "$1" ]; then
+    builtin cd "$1"
+  else
+    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+  fi
+}
 
 # Add GitHub Copilot CLI
 eval "$(gh copilot alias -- "$0")"

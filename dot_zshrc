@@ -33,11 +33,6 @@ alias gcam='git commit -a -m'
 alias gcad='git commit -a --amend'
 
 
-if [ "$(tty)" = "/dev/tty1" ];then
-  exec Hyprland
-fi
-
-
 switchyubi() {
   # Thanks https://glenngillen.com/setting-up-multiple-yubikeys/.
   rm -rf ~/.gnupg/private-keys-v1.d
@@ -93,7 +88,7 @@ zd() {
 }
 
 # Add GitHub Copilot CLI
-eval "$(gh copilot alias -- "$0")"
+eval "$(gh copilot alias -- zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

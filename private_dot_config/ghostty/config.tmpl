@@ -20,6 +20,10 @@ background-opacity = 0.8
 
 
 {{ if eq .chezmoi.os "linux" -}}
+# Easy copy paste
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
 # Colors from DMS
 config-file = ./config-dankcolors
 {{ else -}}

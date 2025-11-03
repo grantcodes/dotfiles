@@ -6,7 +6,7 @@ package_author: Grant Richmond <https://grant.codes>
 parent: default
 matches:
   # Outputs public IP address
-  - trigger: ':ip'
+  - trigger: ';ip'
     replace: '{{output}}'
     vars:
       - name: output
@@ -15,7 +15,7 @@ matches:
           cmd: "curl 'https://api.ipify.org'"
 
   # Outputs the current weather for your location
-  - trigger: ':weather'
+  - trigger: ';weather'
     replace: '{{output}}'
     vars:
       - name: output
@@ -24,74 +24,53 @@ matches:
           cmd: "curl 'http://wttr.in/?format=3'"
 
   # Auto close brackets, quotes and formatting modifiers, and put cursor in center
-  - trigger: ':('
+  - trigger: ';('
     replace: '($|$)'
-  - trigger: ':['
+  - trigger: ';['
     replace: '[$|$]'
-  - trigger: ':{'
+  - trigger: ';{'
     replace: '{$|$}'
-  - trigger: ':<'
+  - trigger: ';<'
     replace: '<$|$>'
-  - trigger: ':`'
+  - trigger: ';`'
     replace: '`$|$`'
-  - trigger: ':"'
+  - trigger: ';"'
     replace: '"$|$"'
-  - trigger: ':_'
+  - trigger: ';_'
     replace: '_$|$_'
-  - trigger: ':*'
+  - trigger: ';*'
     replace: '*$|$*'
-  - trigger: ':-'
+  - trigger: ';-'
     replace: '-$|$-'
 
   # Inserts a markdown code block
-  - trigger: :md-code
+  - trigger: ;md-code
     replace: "```\n$|$\n```"
 
   # Inserts markdown collapsable section
-  - trigger: :md-collapse
+  - trigger: :md-details
     replace: "\n<details>\n\t<summary>$|$</summary>\n\t<p></p>\n</details>"
 
-  # Outputs markdown link, with clipboard contents as the URL
-  - trigger: ':md-link'
-    replace: '[$|$]({{clipboard}})'
-    vars:
-      - name: 'clipboard'
-        type: 'clipboard'
-
-  # Creates a HTML anchor element, with clipboard contents as href
-  - trigger: ':html-link'
-    replace: '<a href="{{clipboard}}" />$|$</a>'
-    vars:
-      - name: 'clipboard'
-        type: 'clipboard'
-
-  # Outputs BB Code link, with clipboard contents as the URL
-  - trigger: ':bb-link'
-    replace: '[url={{clipboard}}]$|$[/url]'
-    vars:
-      - name: 'clipboard'
-        type: 'clipboard'
-
   # Inserts common HTML elements
-  - trigger: :hr
+  - trigger: ;hr
     replace: '<hr />'
-  - trigger: :br
+  - trigger: ;br
     replace: '<br />'
-  - trigger: :div
+  - trigger: ;div
     replace: '<div>$|$</div>'
-  - trigger: :span
+  - trigger: ;span
     replace: '<span>$|$</span>'
-  - trigger: :h1
+  - trigger: ;h1
     replace: '<h1>$|$</h1>'
-  - trigger: :h2
+  - trigger: ;h2
     replace: '<h2>$|$</h2>'
-  - trigger: :h3
+  - trigger: ;h3
     replace: '<h3>$|$</h3>'
-  - trigger: :para
+  - trigger: ;para
     replace: '<p>$|$</p>'
 
   # Inserts any custom HTML, XML or web component tag
-  - trigger: ':tag'
+  - trigger: ';tag'
     replace: '<{{html.element}}>$|$</{{html.element}}>'
     vars:
       - name: 'html'
@@ -101,7 +80,7 @@ matches:
           fields: { element: { type: text } }
 
   # Outputs todays date (yyyy-mm-dd)
-  - trigger: :date
+  - trigger: ;date
     replace: '{{date}}'
     vars:
       - name: date
@@ -110,7 +89,7 @@ matches:
           format: '%Y-%m-%d'
 
   # Outputs the current time (24hr)
-  - trigger: :time
+  - trigger: ;time
     replace: '{{time}}'
     vars:
       - name: time
@@ -119,7 +98,7 @@ matches:
           format: '%H:%M'
 
   # Outputs the month and year (e.g. January 2020)
-  - trigger: :month
+  - trigger: ;month
     replace: '{{date}}'
     vars:
       - name: date
@@ -128,7 +107,7 @@ matches:
           format: '%B %Y'
 
   # Easily inputs ASCII emojis from a dropdown
-  - trigger: :lenny
+  - trigger: ;lenny
     form: '{{smileys}}'
     form_fields:
       smileys:
@@ -147,16 +126,16 @@ matches:
           - 'ツ'
 
   # Ouputs MIT License short text
-  - trigger: :mit-short
+  - trigger: ;mit-short
     replace: 'Licensed under MIT X11, © Grant Richmond {{year}}: https://grant.codes'
     vars: [{ name: year, type: date, params: { format: '%Y' } }]
 
   # Outputs git commit command, with cursor in the message block
-  - trigger: :commit
+  - trigger: ;commit
     replace: git commit -m "$|$"
 
   # Fetches a funny commit message from whatthecommit.com
-  - trigger: :wtc
+  - trigger: ;wtc
     replace: '{{output}}'
     vars:
       - name: output

@@ -9,46 +9,46 @@ matches:
   # JavaScript & Web Development
 
   # Adds a multi-line comment, with cursor in the middle
-  - trigger: ':??'
+  - trigger: ';??'
     replace: '/* $|$ */'
 
   # Inserts a HTML block comment
-  - trigger: ':=='
+  - trigger: ';=='
     replace: '<!-- $|$ -->'
 
   # Inserts console.log statement
-  - trigger: ':con'
+  - trigger: ';con'
     replace: 'console.log($|$);'
 
   # JS console.log, will print variable name and value of a variable in your clipboard
-  - trigger: ':print'
+  - trigger: ';print'
     replace: 'console.info({ {{clipboard}} });'
     vars: [{ name: 'clipboard', type: 'clipboard' }]
 
   # Inserts CSS variable
-  - trigger: ':var'
+  - trigger: ';var'
     replace: 'var(--$|$)'
 
   # Inserts common HTML elements
-  - trigger: :hr
+  - trigger: ;hr
     replace: '<hr />'
-  - trigger: :br
+  - trigger: ;br
     replace: '<br />'
-  - trigger: :div
+  - trigger: ;div
     replace: '<div>$|$</div>'
-  - trigger: :span
+  - trigger: ;span
     replace: '<span>$|$</span>'
-  - trigger: :h1
+  - trigger: ;h1
     replace: '<h1>$|$</h1>'
-  - trigger: :h2
+  - trigger: ;h2
     replace: '<h2>$|$</h2>'
-  - trigger: :h3
+  - trigger: ;h3
     replace: '<h3>$|$</h3>'
-  - trigger: :para
+  - trigger: ;para
     replace: '<p>$|$</p>'
 
   # Inserts any custom HTML, XML or web component tag
-  - trigger: ':tag'
+  - trigger: ';tag'
     replace: '<{{html.element}}>$|$</{{html.element}}>'
     vars:
       - name: 'html'
@@ -59,7 +59,7 @@ matches:
             element:
               type: text
 
-  - trigger: ':reactfc'
+  - trigger: ';reactfc'
     replace: |
       import React from "react";
 
@@ -78,7 +78,7 @@ matches:
             Component name:
             [[name]]
 
-  - trigger: ':pr'
+  - trigger: ';pr'
     replace: |
       ## :memo: Description
 

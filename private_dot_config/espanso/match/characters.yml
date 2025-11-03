@@ -7,43 +7,43 @@ parent: default
 
 matches:
   # ASCII Arrows
-  - triggers: [':-->', ':rarrow']
+  - triggers: [';-->', ';rarrow']
     replace: '→'
-  - triggers: [':<--', ':larrow']
+  - triggers: [';<--', ';larrow']
     replace: '←'
-  - triggers: [':uarrow']
+  - triggers: [';uarrow']
     replace: '↑'
-  - triggers: [':darrow']
+  - triggers: [';darrow']
     replace: '↓'
-  - triggers: [':lrarrow']
+  - triggers: [';lrarrow']
     replace: '↓'
 
   # Common Currency Symbols
-  - trigger: ':eur'
+  - trigger: ';eur'
     replace: '€'
-  - trigger: ':gbp'
+  - trigger: ';gbp'
     replace: '£'
-  - trigger: ':usd'
+  - trigger: ';usd'
     replace: '$'
-  - trigger: ':jpy'
+  - trigger: ';jpy'
     replace: '¥'
-  - trigger: ':inr'
+  - trigger: ';inr'
     replace: '₹'
-  - trigger: ':btc'
+  - trigger: ';btc'
     replace: '฿'
-  - trigger: ':eth'
+  - trigger: ';eth'
     replace: 'Ξ'
 
   # Some Spanish characters I can never remember
-  - trigger: ':ny'
+  - trigger: ';ny'
     replace: 'ñ'
-  - trigger: ':??'
+  - trigger: ';??'
     replace: '¿'
 
   # Common Special Characters
-  - triggers: [':(c)', ':copyright:']
+  - triggers: [';(c)', ';copyright:']
     replace: '©'
-  - triggers: [':(r)', ':registered:']
+  - triggers: [';(r)', ';registered:']
     replace: '®'
-  - triggers: [':(tm)', ':trademark:']
+  - triggers: [';(tm)', ';trademark:']
     replace: '™'

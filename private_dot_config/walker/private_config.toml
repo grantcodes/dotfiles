@@ -155,7 +155,7 @@ desktopapplications = [
   { action = "start:keep", label = "open+next", bind = "shift Return", after = "KeepOpen" },
   { action = "new_instance", label = "new instance", bind = "ctrl Return" },
   { action = "new_instance:keep", label = "new+next", bind = "ctrl alt Return", after = "KeepOpen" },
-  { action = "pin", bind = "ctrl p", after = "AsyncRaeload" },
+  { action = "pin", bind = "ctrl p", after = "AsyncReload" },
   { action = "unpin", bind = "ctrl p", after = "AsyncReload" },
   { action = "pinup", bind = "ctrl n", after = "AsyncReload" },
   { action = "pindown", bind = "ctrl m", after = "AsyncReload" },
@@ -180,7 +180,7 @@ files = [
 ]
 
 1password = [
-  { action = "copy_password", label = "copy password", default =e true, bind = "Return" },
+  { action = "copy_password", label = "copy password", default = true, bind = "Return" },
   { action = "copy_username", label = "copy username", bind = "shift Return" },
   { action = "copy_2fa", label = "copy 2fa", bind = "ctrl Return" },
 ]

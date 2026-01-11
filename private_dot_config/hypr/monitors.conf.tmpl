@@ -76,7 +76,9 @@ monitor=desc:{{ $officeDesc }}, preferred, {{ $officeOffsetLeft }}x{{ $officeOff
 monitor=desc:{{ $homePrimaryDesc }}, preferred, {{ $homePrimaryOffsetLeft }}x{{ $homePrimaryOffsetTop }}, {{ $homePrimaryScale }}
 
 # Home secondary monitor
-monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}, transform, 3
+# Previously rotated
+# monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}, transform, 3
+monitor=desc:{{ $homeSecondaryDesc }}, {{ $homeSecondaryHeight }}x{{ $homeSecondaryWidth }}@{{ $homeSecondaryHz }}, {{ $homeSecondaryOffsetLeft }}x{{ $homeSecondaryOffsetTop }}, {{ $homeSecondaryScale }}
 
 # Fallback monitor to workaround hyprlock issues.
 # See https://github.com/hyprwm/hyprlock/issues/434

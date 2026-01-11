@@ -60,26 +60,6 @@ matches:
   - trigger: ';**'
     replace: '*$|$*'
 
-  # # Screenshot before and after
-  # - trigger: ';scba'
-  #   replace: |
-  #     <details><summary>Before & After Screenshot</summary>
-
-  #     | Before                        | After                       |
-  #     | ----------------------------- | --------------------------- |
-  #     | ![Before screenshot][before{{timestamp}}] | ![After screenshot][after{{timestamp}}] |
-
-  #     </details>
-
-  #     [before{{timestamp}}]: $|$
-  #     [after{{timestamp}}]:
-  #   vars:
-  #     - name: 'timestamp'
-  #       type: 'date'
-  #       params:
-  #         format: '%s'
-
-  # Trying a version that doesn't use the reference links
   # Screenshot before and after
   - trigger: ';scba'
     replace: |
@@ -87,6 +67,6 @@ matches:
 
       | Before                        | After                       |
       | ----------------------------- | --------------------------- |
-      | $|$ |  |
+      | img | img |
 
       </details>
